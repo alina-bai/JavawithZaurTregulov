@@ -1,0 +1,6 @@
+package org.example.Lesson10.P4.P5;
+
+public class E {
+    public int xyz = 100;
+
+}

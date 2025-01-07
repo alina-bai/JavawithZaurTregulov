@@ -1,0 +1,11 @@
+package org.example.Lesson10.P1.P2;
+
+public class B {
+    public  static boolean b1 = true;
+
+    public void showBoolean(){
+        System.out.println(b1);
+    }
+
+
+}
