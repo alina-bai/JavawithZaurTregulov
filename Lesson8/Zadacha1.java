@@ -1,4 +1,4 @@
-package org.example.Lesson8;
+package Lesson8;
 
 public class Zadacha1 {
     static double umnojeniye (double a, double b, double c) {

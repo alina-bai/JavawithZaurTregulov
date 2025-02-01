@@ -1,4 +1,4 @@
-package org.example.Lesson14;
+package Lesson14;
 
 public class Time {
     static void vremya () {

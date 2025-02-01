@@ -1,4 +1,4 @@
-package org.example.Lesson8;
+package Lesson8;
 
 public class ZadachaTest2 {
     public static void main(String[] args) {

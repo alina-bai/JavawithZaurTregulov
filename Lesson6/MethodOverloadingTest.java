@@ -1,4 +1,4 @@
-package org.example.Lesson6;
+package Lesson6;
 
 public class MethodOverloadingTest {
     public static void main(String[] args) {

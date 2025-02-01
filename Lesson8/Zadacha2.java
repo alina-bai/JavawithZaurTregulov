@@ -1,4 +1,4 @@
-package org.example.Lesson8;
+package Lesson8;
 
 public class Zadacha2 {
     public final static double PI = 3.14;

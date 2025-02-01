@@ -1,4 +1,4 @@
-package org.example.Lesson7;
+package Lesson7;
 
 public class Employee {
     int id;

@@ -1,4 +1,4 @@
-package org.example.Lesson19;
+package Lesson19;
 
 public class Lesson19 {
     public static String[] abs(String[]... arrays) {

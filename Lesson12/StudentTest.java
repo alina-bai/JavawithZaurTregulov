@@ -1,4 +1,4 @@
-package org.example.Lesson12;
+package Lesson12;
 
 public class StudentTest {
     public static void method1 (Student st1, Student st2) {

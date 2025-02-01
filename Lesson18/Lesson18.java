@@ -1,4 +1,4 @@
-package org.example.Lesson18;
+package Lesson18;
 
 public class Lesson18 {
     public static int[] sortirovka(int[] array) {

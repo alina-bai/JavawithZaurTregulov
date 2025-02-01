@@ -1,4 +1,4 @@
-package org.example.Lesson17;
+package Lesson17;
 
 public class Lesson17 {
     public static boolean ravenstva(StringBuilder sb1, StringBuilder sb2){

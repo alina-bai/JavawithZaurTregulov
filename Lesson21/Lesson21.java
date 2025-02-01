@@ -1,4 +1,4 @@
-package org.example.Lesson21;
+package Lesson21;
 
 public class Lesson21 {
 
@@ -36,7 +36,8 @@ class Driver extends Employee {
     void vodit () {
         System.out.println("Vodae");
     }
-}
+
+
 
 public static void main(String[] args) {
     // Создаём объект класса Doctor

@@ -1,4 +1,4 @@
-package org.example.Lesson13;
+package Lesson13;
 
 public class Month {
     public static void dayQuantity (int n) {

@@ -1,4 +1,4 @@
-package org.example.Lesson20;
+package Lesson20;
 import java.util.*;
 public class Lesson20 {
 

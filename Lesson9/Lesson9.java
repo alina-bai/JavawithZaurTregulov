@@ -1,4 +1,4 @@
-package org.example.Lesson9;
+package Lesson9;
 
 public class Lesson9 {
     public static void abc () {

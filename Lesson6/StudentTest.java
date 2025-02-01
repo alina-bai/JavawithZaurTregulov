@@ -1,9 +1,9 @@
-package org.example.Lesson6;
+package Lesson6;
 
-import org.example.Lesson6.Student;
+import Lesson6.Student;
 
 public class StudentTest {
-    double sredArifmOcenka ( org.example.Lesson6.Student st) {
+    double sredArifmOcenka ( Lesson6.Student st) {
         double sredOcenka = (st.mathAverageGrade + st.economicsAverageGrade + st.foreignLanguageAverageGrade)/3;
         System.out.println("Srednyaya arifmeticheskaya ocenka studenta  " + st.name +" " + st.surname + ": " + sredOcenka);
         return sredOcenka;

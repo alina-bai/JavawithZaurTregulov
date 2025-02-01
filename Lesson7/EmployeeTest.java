@@ -1,4 +1,4 @@
-package org.example.Lesson7;
+package Lesson7;
 public class EmployeeTest {
     public static void main(String[] args) {
         Employee emp1 = new Employee(5);

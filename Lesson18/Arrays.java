@@ -1,4 +1,4 @@
-package org.example.Lesson18;
+package Lesson18;
 
 public class Arrays {
     public static void showArray(String[][] array) {

@@ -1,4 +1,4 @@
-package org.example.Lesson16;
+package Lesson16;
 
 public class Lesson16 {
     public void email (String s) {

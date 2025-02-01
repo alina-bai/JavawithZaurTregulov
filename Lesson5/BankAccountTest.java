@@ -1,4 +1,4 @@
-package org.example.Lesson5;
+package Lesson5;
 
 public class BankAccountTest {
     public static void main(String[] args) {

@@ -1,12 +1,12 @@
-package org.example.Lesson10.P4;
-import org.example.Lesson10.P1.A;
-import org.example.Lesson10.P1.P2.B;
-import org.example.Lesson10.P1.P2.P3.C;
-import org.example.Lesson10.P4.P5.*;
+package Lesson10.P4;
+import Lesson10.P1.A;
+import Lesson10.P1.P2.B;
+import Lesson10.P1.P2.P3.C;
+import Lesson10.P4.P5.*;
 
 import java.sql.SQLOutput;
 
-import static org.example.Lesson10.P1.P2.B.*;
+import static Lesson10.P1.P2.B.*;
 
 
 public class D {

@@ -1,4 +1,4 @@
-package org.example.Lesson10.P1.P2;
+package Lesson10.P1.P2;
 
 public class B {
     public  static boolean b1 = true;
