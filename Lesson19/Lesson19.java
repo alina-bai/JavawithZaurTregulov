@@ -35,6 +35,7 @@ public class Lesson19 {
             for (String arg : args) {
                 if (combinedArray[i] != null && combinedArray[i].equals(arg)) {
                     combinedArray[i] = null;
+                    break;
                 }
             }
         }

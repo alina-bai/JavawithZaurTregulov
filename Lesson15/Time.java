@@ -14,7 +14,6 @@ public class Time {
                 }
                 int sekunda = 0;
 
-                INNER:
                 while (sekunda < 60) {
                     if (sekunda * chas > minuta) {
                         continue MIDDLE;

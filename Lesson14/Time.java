@@ -9,14 +9,13 @@ public class Time {
                 if (chas > 1 && minuta % 10 ==0) {
                 break OUTER;
                 }
-            INNER:
-            for (int sekunda=0; sekunda<60; sekunda++){
-                if (sekunda*chas > minuta) {
-                    continue MIDDLE;
+                for (int sekunda = 0; sekunda < 60; sekunda++) {
+                    if (sekunda * chas > minuta) {
+                        continue MIDDLE;
 
+                    }
+                    System.out.println(chas + ":" + minuta + ":" + sekunda);
                 }
-                System.out.println(chas +":" + minuta + ":" + sekunda);
-            }
          }
     }
 }
