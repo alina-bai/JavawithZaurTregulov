@@ -1,6 +1,8 @@
 package Lesson24;
 
 interface Speakable {
-    void speak();
+   default void speak() {
+       System.out.println("Somebody speaks");
+   };
     }
 

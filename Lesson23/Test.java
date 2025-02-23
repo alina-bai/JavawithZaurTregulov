@@ -9,7 +9,7 @@ public class Test {
     }
     public static void main(String[] args){
         Y a = new Y();
-        abc(a,a); //Это выдает ошибку так как не знает какой брать X или Y
+       // abc(a,a); //Это выдает ошибку так как не знает какой брать X или Y
         }
     }
 

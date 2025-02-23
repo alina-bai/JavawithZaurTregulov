@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson23/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson23/X.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson23/Y.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson23/p1/X.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson23/p2/Y.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson24/Lion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson24/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Fish.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Fish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Mammal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Mammal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Mechenosec.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Mechenosec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Pinguin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Pinguin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lesson24/Speakable.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lesson24/Speakable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -68,6 +73,7 @@
     "Application.Lesson20.executor": "Run",
     "Application.Lesson21.executor": "Run",
     "Application.Lesson9.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MethodOverloadingTest.executor": "Run",
     "Application.Month.executor": "Run",
     "Application.Student.executor": "Run",

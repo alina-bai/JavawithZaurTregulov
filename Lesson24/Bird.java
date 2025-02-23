@@ -1,7 +1,10 @@
 package Lesson24;
 
 abstract class Bird extends Animal implements Speakable {
-    String name;
+    Bird(String name){
+        super(name);
+        this.name = name;
+    }
 
     abstract void fly ();
     public void speak (){

@@ -1,7 +1,11 @@
 package Lesson24;
 
 abstract class Mammal extends Animal implements Speakable {
-    String name;
+
+    Mammal(String name) {
+        super(name);
+        this.name = name;
+    }
 
     abstract void run();
 
