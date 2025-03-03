@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson25/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Bird.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Fish.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Lion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Mammal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Mechenosec.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Pinguin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson25/Speakable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson26/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson26/Lesson26.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +65,7 @@
     "Application.Lesson19.executor": "Run",
     "Application.Lesson20.executor": "Run",
     "Application.Lesson21.executor": "Run",
+    "Application.Lesson26.executor": "Run",
     "Application.Lesson9.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MethodOverloadingTest.executor": "Run",
@@ -84,6 +78,7 @@
     "Application.Y.executor": "Run",
     "Application.Zadacha1Test.executor": "Run",
     "Application.ZadachaTest2.executor": "Run",
+    "Application.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
