@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson26/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson26/Lesson26.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson26/Lion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson26/Mammal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson28/LocalDateTimeExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +65,7 @@
     "Application.Lesson21.executor": "Run",
     "Application.Lesson26.executor": "Run",
     "Application.Lesson9.executor": "Run",
+    "Application.LocalDateTimeExample.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.MethodOverloadingTest.executor": "Run",
     "Application.Month.executor": "Run",
