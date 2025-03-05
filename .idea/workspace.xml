@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson28/LocalDateTimeExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson28/Lesson28Homework.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson28/TestHomework.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,7 @@
     "Application.Student.executor": "Run",
     "Application.StudentTest.executor": "Run",
     "Application.Test.executor": "Run",
+    "Application.TestHomework.executor": "Run",
     "Application.TestStudent.executor": "Run",
     "Application.Time.executor": "Run",
     "Application.Y.executor": "Run",
