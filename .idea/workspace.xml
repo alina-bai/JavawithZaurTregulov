@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson28/Lesson28Homework.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson28/TestHomework.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson29/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson29/ExampleWithPredicate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lesson29/TestEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +60,7 @@
     "Application.D.executor": "Run",
     "Application.Driver.executor": "Run",
     "Application.EmployeeTest.executor": "Run",
+    "Application.ExampleWithPredicate.executor": "Run",
     "Application.Lesson16.executor": "Run",
     "Application.Lesson17Test.executor": "Run",
     "Application.Lesson18.executor": "Run",
