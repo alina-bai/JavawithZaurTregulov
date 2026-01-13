@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7cf37080-0c97-4151-8615-b6dc6d2a71a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Lesson29/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson29/ExampleWithPredicate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lesson29/TestEmployee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,50 +50,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Arrays.executor": "Run",
-    "Application.BankAccountTest.executor": "Run",
-    "Application.CarTest.executor": "Run",
-    "Application.D.executor": "Run",
-    "Application.Driver.executor": "Run",
-    "Application.EmployeeTest.executor": "Run",
-    "Application.ExampleWithPredicate.executor": "Run",
-    "Application.Lesson16.executor": "Run",
-    "Application.Lesson17Test.executor": "Run",
-    "Application.Lesson18.executor": "Run",
-    "Application.Lesson19.executor": "Run",
-    "Application.Lesson20.executor": "Run",
-    "Application.Lesson21.executor": "Run",
-    "Application.Lesson26.executor": "Run",
-    "Application.Lesson9.executor": "Run",
-    "Application.LocalDateTimeExample.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.MethodOverloadingTest.executor": "Run",
-    "Application.Month.executor": "Run",
-    "Application.Student.executor": "Run",
-    "Application.StudentTest.executor": "Run",
-    "Application.Test.executor": "Run",
-    "Application.TestHomework.executor": "Run",
-    "Application.TestStudent.executor": "Run",
-    "Application.Time.executor": "Run",
-    "Application.Y.executor": "Run",
-    "Application.Zadacha1Test.executor": "Run",
-    "Application.ZadachaTest2.executor": "Run",
-    "Application.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/azamat/Desktop/Lessons/Lesson25",
-    "onboarding.tips.debug.path": "/Users/azamat/Desktop/Lessons/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Arrays.executor&quot;: &quot;Run&quot;,
+    &quot;Application.BankAccountTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CarTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.D.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Driver.executor&quot;: &quot;Run&quot;,
+    &quot;Application.EmployeeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ExampleWithPredicate.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ExampleWithRemoveIf.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson16.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson17Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson18.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson19.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson20.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson21.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson26.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lesson9.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LocalDateTimeExample.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MethodOverloadingTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Month.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Student.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StudentTest.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestEmployee.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestHomework.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestStudent.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Time.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Y.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Zadacha1Test.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ZadachaTest2.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/azamat/Desktop/Lessons/Lesson25&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/azamat/Desktop/Lessons/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Lesson25" />
@@ -106,11 +108,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <method v="2" />
@@ -124,6 +121,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1735728519310</updated>
+      <workItem from="1743087148706" duration="3000" />
+      <workItem from="1743087163684" duration="13000" />
     </task>
     <servers />
   </component>
