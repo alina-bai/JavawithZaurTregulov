@@ -1,0 +1,69 @@
+Generics in Java
+
+Generics in Java allow us to write flexible and reusable code by using types as parameters.
+
+Instead of working with a specific type (like String or Integer), we can write code that works with any type, while still keeping type safety.
+
+Why Generics are useful
+
+Before generics, collections (like ArrayList) stored objects as Object.
+This caused two main problems:
+
+we had to cast manually
+errors could appear at runtime
+
+Generics solve this by providing compile-time type checking.
+
+Example without Generics
+ArrayList list = new ArrayList();
+list.add("Hello");
+
+String text = (String) list.get(0); // need casting
+Example with Generics
+ArrayList<String> list = new ArrayList<>();
+list.add("Hello");
+
+String text = list.get(0); // no casting needed
+
+Now the compiler already knows that the list contains String.
+
+Generic Classes
+
+We can create our own generic classes using type parameters.
+
+public class Box<T> {
+    private T value;
+
+    public void set(T value) {
+        this.value = value;
+    }
+
+    public T get() {
+        return value;
+    }
+}
+
+Here, T is a placeholder for any type.
+
+Generic Methods
+
+Generics can also be used in methods:
+
+public <T> void print(T value) {
+    System.out.println(value);
+}
+Bounded Generics
+
+Sometimes we want to restrict the type:
+
+public <T extends Number> void printNumber(T value) {
+    System.out.println(value);
+}
+
+Now T can only be a subclass of Number.
+
+Summary
+Generics make code type-safe
+remove the need for casting
+allow writing reusable and flexible code
+work with classes, methods, and collections
