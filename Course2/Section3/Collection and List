@@ -1,0 +1,69 @@
+Introduction to Collections and List in Java
+
+In Java, the Collection Framework is used to store and manage groups of objects.
+
+It provides ready-to-use classes and interfaces that make working with data much easier.
+
+What is Collection?
+
+A Collection is a group of objects (like a container).
+
+Java provides the Collection interface, which is the root of the collection hierarchy.
+
+Main features:
+
+dynamic size (can grow and shrink)
+built-in methods (add, remove, search, etc.)
+works with generics for type safety
+Common Collection Types
+
+Some of the most commonly used collections are:
+
+List → ordered collection
+Set → unique elements only
+Queue → elements processed in order
+List Interface
+
+List is one of the most popular collection types.
+
+It represents an ordered collection of elements, where:
+
+elements are stored in a specific order
+duplicates are allowed
+elements can be accessed by index
+Common List Implementations
+1. ArrayList
+based on a dynamic array
+fast access by index
+slower when inserting/removing in the middle
+List<String> list = new ArrayList<>();
+list.add("Apple");
+list.add("Banana");
+
+System.out.println(list.get(0)); // Apple
+2. LinkedList
+based on a linked structure
+faster insert/remove operations
+slower access by index
+List<String> list = new LinkedList<>();
+list.add("Apple");
+list.add("Banana");
+Common List Methods
+
+Some useful methods:
+
+add(element) → add element
+remove(index) → remove element
+get(index) → get element
+size() → number of elements
+contains(value) → check if element exists
+Key Differences
+ArrayList	LinkedList
+Fast access (get)	Slower access
+Slower insert/remove	Faster insert/remove
+Uses array	Uses linked nodes
+Summary
+Collections help manage groups of objects
+List is an ordered collection
+ArrayList is good for reading data
+LinkedList is better for frequent insert/remove operations
