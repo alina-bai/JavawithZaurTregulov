@@ -1,0 +1,59 @@
+ArrayList in Java
+
+ArrayList is one of the most commonly used classes in Java.
+It is a part of the List interface and is based on a dynamic array.
+
+This means its size can grow or shrink automatically when elements are added or removed.
+
+Why use ArrayList?
+
+ArrayList is useful when:
+
+you need fast access to elements
+you work with indexed data
+you don’t know the size of the collection in advance
+Creating an ArrayList
+import java.util.ArrayList;
+import java.util.List;
+
+List<String> list = new ArrayList<>();
+Adding Elements
+list.add("Apple");
+list.add("Banana");
+list.add("Orange");
+Accessing Elements
+String first = list.get(0); // Apple
+
+ArrayList allows fast access by index.
+
+Updating Elements
+list.set(1, "Mango"); // replaces Banana
+Removing Elements
+list.remove(0);        // remove by index
+list.remove("Orange"); // remove by value
+Looping through ArrayList
+for (String item : list) {
+    System.out.println(item);
+}
+Important Features
+maintains insertion order
+allows duplicates
+allows null values
+resizable (dynamic size)
+Performance
+fast: get(index)
+slower: add/remove in the middle (because elements shift)
+When NOT to use ArrayList
+
+ArrayList is not the best choice when:
+
+you frequently insert/remove elements in the middle
+you need very fast modifications
+
+In such cases, LinkedList might be a better option.
+
+Summary
+ArrayList is a dynamic array
+provides fast access by index
+easy to use and very flexible
+best for reading data more than modifying it
