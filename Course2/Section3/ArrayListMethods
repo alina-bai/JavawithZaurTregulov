@@ -1,0 +1,126 @@
+ArrayList Methods in Java (Detailed Guide)
+
+ArrayList provides a rich set of methods to manage elements: adding, removing, updating, searching, and iterating.
+
+1. Adding Elements
+add()
+list.add("Apple");          // adds to the end
+list.add(1, "Banana");      // adds at specific index
+addAll()
+list.addAll(anotherList);          // adds all elements
+list.addAll(1, anotherList);       // adds at index
+
+👉 Useful for merging lists.
+
+2. Accessing Elements
+get()
+String item = list.get(0);
+fast operation (O(1))
+throws IndexOutOfBoundsException if index is invalid
+3. Updating Elements
+set()
+list.set(1, "Mango");
+replaces element at index
+does NOT change list size
+4. Removing Elements
+remove()
+list.remove(0);        // remove by index
+list.remove("Apple");  // remove by value
+removeAll()
+list.removeAll(anotherList);
+
+👉 removes all matching elements
+
+removeIf() (Java 8+)
+list.removeIf(item -> item.startsWith("A"));
+
+👉 uses lambda (functional style)
+
+clear()
+list.clear(); // removes everything
+5. Searching and Checking
+contains()
+list.contains("Apple");
+indexOf() / lastIndexOf()
+list.indexOf("Apple");
+list.lastIndexOf("Apple");
+returns index or -1 if not found
+isEmpty()
+list.isEmpty();
+6. Size and Capacity
+size()
+int size = list.size();
+ensureCapacity() (rarely used)
+list.ensureCapacity(100);
+
+👉 pre-allocates memory for performance
+
+trimToSize()
+list.trimToSize();
+
+👉 reduces memory to actual size
+
+7. Iterating Over ArrayList
+for-each loop
+for (String item : list) {
+    System.out.println(item);
+}
+for loop
+for (int i = 0; i < list.size(); i++) {
+    System.out.println(list.get(i));
+}
+forEach() (Java 8+)
+list.forEach(item -> System.out.println(item));
+Iterator
+Iterator<String> it = list.iterator();
+
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+8. Sorting
+sort()
+list.sort(String::compareTo);
+
+Or with lambda:
+
+list.sort((a, b) -> a.compareTo(b));
+9. Converting ArrayList
+toArray()
+Object[] array = list.toArray();
+toArray with type
+String[] array = list.toArray(new String[0]);
+10. Other Useful Methods
+equals()
+list1.equals(list2);
+
+👉 checks if two lists are equal
+
+clone()
+ArrayList<String> copy = (ArrayList<String>) list.clone();
+subList()
+List<String> sub = list.subList(0, 2);
+
+👉 returns a portion of the list
+
+Important Notes
+ArrayList allows duplicates
+allows null values
+maintains insertion order
+not synchronized (not thread-safe)
+Performance Summary
+Operation	Complexity
+get()	O(1)
+add() (end)	O(1)
+add/remove (middle)	O(n)
+search (contains)	O(n)
+Final Summary
+
+ArrayList methods allow you to:
+
+add → add(), addAll()
+access → get()
+update → set()
+remove → remove(), removeIf(), clear()
+search → contains(), indexOf()
+iterate → loops, forEach(), Iterator
+sort → sort()
