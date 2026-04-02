@@ -1,0 +1,83 @@
+Iterator Interface in Java
+
+Iterator is an interface in Java used to traverse (iterate over) elements in a collection.
+
+It is part of the Java Collection Framework and works with classes like ArrayList, LinkedList, HashSet, etc.
+
+Why use Iterator?
+
+Iterator is useful when:
+
+you need a safe way to iterate
+you want to remove elements during iteration
+you want a unified way to work with different collections
+Creating an Iterator
+import java.util.ArrayList;
+import java.util.Iterator;
+
+ArrayList<String> list = new ArrayList<>();
+list.add("Apple");
+list.add("Banana");
+
+Iterator<String> it = list.iterator();
+Main Methods of Iterator
+hasNext()
+it.hasNext();
+returns true if there are more elements
+used to control the loop
+next()
+it.next();
+returns the next element
+moves the iterator forward
+remove()
+it.remove();
+removes the last element returned by next()
+safe way to remove elements during iteration
+Example: Iterating with Iterator
+Iterator<String> it = list.iterator();
+
+while (it.hasNext()) {
+    String item = it.next();
+    System.out.println(item);
+}
+Example: Removing Elements Safely
+Iterator<String> it = list.iterator();
+
+while (it.hasNext()) {
+    String item = it.next();
+    
+    if (item.startsWith("A")) {
+        it.remove(); // safe removal
+    }
+}
+
+👉 Important: do NOT use list.remove() inside a loop — it can cause errors.
+
+Common Mistake
+
+❌ Wrong way:
+
+for (String item : list) {
+    if (item.startsWith("A")) {
+        list.remove(item); // can throw ConcurrentModificationException
+    }
+}
+
+✔ Correct way: use Iterator.remove()
+
+Iterator vs forEach
+Iterator	for-each loop
+Can remove elements	Cannot safely remove
+More control	Simpler syntax
+Works step-by-step	Works automatically
+Important Notes
+Iterator works only forward
+each element can be accessed once
+calling next() without hasNext() may throw exception
+not thread-safe
+Summary
+Iterator is used to loop through collections
+main methods: hasNext(), next(), remove()
+safest way to remove elements during iteration
+gives more control than for-each
+
