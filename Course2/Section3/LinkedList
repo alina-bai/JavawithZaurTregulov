@@ -1,0 +1,66 @@
+LinkedList in Java
+
+LinkedList is a class in Java that implements the List interface.
+
+It stores elements using a linked structure, not an array like ArrayList.
+
+Each element (node) contains:
+
+the data
+a reference to the next element
+(and to the previous element)
+How it works (simple idea)
+
+In LinkedList, elements are not stored next to each other in memory.
+
+Instead, each element points to the next one:
+
+[Apple] -> [Banana] -> [Orange]
+Why use LinkedList?
+
+Use LinkedList when:
+
+you часто добавляешь или удаляешь элементы
+работаешь с началом или концом списка
+Creating LinkedList
+import java.util.LinkedList;
+import java.util.List;
+
+List<String> list = new LinkedList<>();
+Common Methods
+Adding elements
+list.add("Apple");        // add to end
+list.addFirst("Banana");  // add to beginning
+list.addLast("Orange");   // add to end
+Accessing elements
+list.get(0);        // by index
+list.getFirst();    // first element
+list.getLast();     // last element
+Removing elements
+list.remove(0);         // by index
+list.removeFirst();     // first element
+list.removeLast();      // last element
+Important Features
+maintains order
+allows duplicates
+allows null
+implements both List and Deque
+Performance (very important)
+Operation	LinkedList
+get(index)	slow (O(n))
+add/remove (start/end)	fast (O(1))
+add/remove (middle)	faster than ArrayList
+When NOT to use LinkedList
+
+Do NOT use it when:
+
+you часто обращаешься по индексу (get(i))
+тебе нужен быстрый доступ к элементам
+LinkedList vs ArrayList (short)
+ArrayList → fast reading
+LinkedList → fast insert/remove
+Summary
+LinkedList uses nodes instead of array
+good for frequent insert/remove
+slow for index access
+best for working with beginning/end of list
