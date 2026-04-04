@@ -1,0 +1,72 @@
+ListIterator in Java
+
+ListIterator is an interface in Java used to iterate over a List in both directions.
+
+It is more powerful than Iterator and works only with List implementations like:
+
+ArrayList
+LinkedList
+Why use ListIterator?
+
+Use ListIterator when you need:
+
+to move forward and backward
+to modify elements during iteration
+more control compared to Iterator
+Creating ListIterator
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+List<String> list = new ArrayList<>();
+list.add("Apple");
+list.add("Banana");
+list.add("Orange");
+
+ListIterator<String> it = list.listIterator();
+Main Methods
+Forward traversal
+it.hasNext(); // true if next exists
+it.next();    // move forward
+Backward traversal
+it.hasPrevious(); // true if previous exists
+it.previous();    // move backward
+Get indexes
+it.nextIndex();
+it.previousIndex();
+Modifying elements
+it.set("Mango"); // replace current element
+it.add("Kiwi");  // add element during iteration
+Removing element
+it.remove();
+
+👉 works like in Iterator, removes last returned element
+
+Example: Forward + Backward
+ListIterator<String> it = list.listIterator();
+
+// forward
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+
+// backward
+while (it.hasPrevious()) {
+    System.out.println(it.previous());
+}
+Iterator vs ListIterator
+Feature	Iterator	ListIterator
+Move forward	✅	✅
+Move backward	❌	✅
+Add elements	❌	✅
+Replace elements	❌	✅
+Works with all collections	✅	❌ (only List)
+Important Notes
+works only with List
+allows modifying list safely during iteration
+more powerful but slightly more complex than Iterator
+Summary
+ListIterator = advanced version of Iterator
+can go forward and backward
+can add, remove, update elements
+used when you need full control over iteration
