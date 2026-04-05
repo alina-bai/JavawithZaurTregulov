@@ -1,0 +1,73 @@
+Binary Search in Java
+
+Binary Search is an efficient algorithm used to find an element in a sorted array or list.
+
+Instead of checking every element, it repeatedly divides the search range in half.
+
+How it works (simple idea)
+Take the middle element
+Compare it with the target value
+If equal → found
+If target is smaller → search left half
+If target is greater → search right half
+Repeat until found or no elements left
+Important Requirement
+
+👉 The collection must be sorted before using Binary Search.
+
+Example
+int[] arr = {1, 3, 5, 7, 9};
+int target = 5;
+
+Steps:
+
+middle = 5 → found ✅
+Java Built-in Method
+
+Java provides a ready-to-use method:
+
+import java.util.Arrays;
+
+int index = Arrays.binarySearch(arr, 5);
+Custom Implementation
+public static int binarySearch(int[] arr, int target) {
+    int left = 0;
+    int right = arr.length - 1;
+
+    while (left <= right) {
+        int mid = (left + right) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return -1; // not found
+}
+Time Complexity
+Case	Complexity
+Best	O(1)
+Average	O(log n)
+Worst	O(log n)
+
+👉 Much faster than linear search (O(n))
+
+When to use Binary Search
+
+Use it when:
+
+data is sorted
+you need fast search
+dataset is large
+When NOT to use
+data is not sorted
+frequent insertions (because sorting is required)
+Summary
+Binary Search works only on sorted data
+divides the array in half each step
+very efficient: O(log n)
+can be implemented manually or using Arrays.binarySearch()
