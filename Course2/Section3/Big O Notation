@@ -1,0 +1,65 @@
+Big O Notation in Java
+
+Big O Notation is used to describe how fast an algorithm works
+as the size of input data grows.
+
+It shows how time or memory increases, not exact speed.
+
+Simple Idea
+
+Big O answers the question:
+
+👉 “What happens when data becomes very large?”
+
+Most Common Complexities
+O(1) — Constant Time
+int x = arr[0];
+always same speed
+does not depend on input size
+O(n) — Linear Time
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);
+}
+grows linearly
+more data → more time
+O(log n) — Logarithmic Time
+// example: binary search
+data is divided each step
+very fast for large datasets
+O(n²) — Quadratic Time
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        System.out.println(i + " " + j);
+    }
+}
+very slow for big data
+often appears with nested loops
+Visualization (Growth Speed)
+O(1)   → best
+O(log n)
+O(n)
+O(n log n)
+O(n²) → bad
+Why Big O is Important
+helps compare algorithms
+shows scalability
+helps write efficient code
+Real Examples in Java
+ArrayList.get() → O(1)
+ArrayList.contains() → O(n)
+Binary Search → O(log n)
+Nested loops → O(n²)
+Key Rules (Simple)
+ignore constants → O(2n) = O(n)
+focus on biggest growth → O(n² + n) = O(n²)
+loops → usually O(n)
+nested loops → multiply → O(n²)
+Summary
+Big O measures efficiency
+focuses on growth, not exact time
+helps choose better algorithms
+most important types:
+O(1)
+O(n)
+O(log n)
+O(n²)
