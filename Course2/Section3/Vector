@@ -1,0 +1,72 @@
+Vector in Java
+
+Vector is a class in Java that implements the List interface, similar to ArrayList.
+
+It is based on a dynamic array, meaning it can grow and shrink automatically.
+
+Key Difference from ArrayList
+
+👉 The main difference:
+
+Vector is synchronized (thread-safe)
+ArrayList is not synchronized
+
+This means:
+
+Vector is safe to use in multi-threaded environments
+but it is slower because of synchronization
+Creating a Vector
+import java.util.Vector;
+
+Vector<String> vector = new Vector<>();
+Common Methods
+Adding elements
+vector.add("Apple");
+vector.addElement("Banana"); // older method
+Accessing elements
+vector.get(0);
+vector.firstElement();
+vector.lastElement();
+Updating elements
+vector.set(1, "Mango");
+Removing elements
+vector.remove(0);
+vector.removeElement("Apple");
+vector.clear();
+Size
+vector.size();
+Legacy Methods (Old Style)
+
+Vector also has older methods (from early Java):
+
+addElement()
+elementAt()
+removeElement()
+
+👉 Today we usually use modern methods like add(), get(), remove()
+
+When to use Vector?
+
+Use Vector when:
+
+you need thread safety
+multiple threads access the same list
+When NOT to use
+
+Avoid Vector when:
+
+you don’t need synchronization
+performance is important
+
+👉 In most cases, ArrayList is preferred.
+
+Vector vs ArrayList
+Feature	Vector	ArrayList
+Thread-safe	✅	❌
+Performance	Slower	Faster
+Usage	Rare today	Very common
+Summary
+Vector is a dynamic array like ArrayList
+it is thread-safe
+slower due to synchronization
+mostly replaced by ArrayList in modern Java
