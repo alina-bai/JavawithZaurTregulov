@@ -1,0 +1,87 @@
+Stack in Java
+
+Stack is a class in Java that represents a Last In, First Out (LIFO) data structure.
+
+👉 This means:
+the last element added is the first one to be removed
+
+Example:
+
+Push: 1 → 2 → 3  
+Pop:  3 → 2 → 1
+Important Note
+
+Stack is based on Vector, so:
+
+it is synchronized (thread-safe)
+but considered legacy (old) in modern Java
+
+👉 Today, Deque (like ArrayDeque) is preferred.
+
+Creating a Stack
+import java.util.Stack;
+
+Stack<String> stack = new Stack<>();
+Main Methods
+push()
+stack.push("Apple");
+stack.push("Banana");
+
+👉 adds element to the top
+
+pop()
+stack.pop();
+
+👉 removes and returns the top element
+
+peek()
+stack.peek();
+
+👉 returns top element without removing
+
+isEmpty()
+stack.isEmpty();
+
+👉 checks if stack is empty
+
+search()
+stack.search("Apple");
+
+👉 returns position from top (1-based), or -1
+
+Example
+Stack<Integer> stack = new Stack<>();
+
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+System.out.println(stack.pop()); // 3
+System.out.println(stack.peek()); // 2
+When to use Stack?
+
+Use Stack when:
+
+you need LIFO logic
+undo/redo operations
+parsing expressions
+backtracking (like recursion)
+Stack vs Deque (Modern Approach)
+Stack	Deque (ArrayDeque)
+Legacy	Modern
+Synchronized	Not synchronized
+Slower	Faster
+
+👉 Preferred today:
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+Deque<Integer> stack = new ArrayDeque<>();
+stack.push(1);
+Summary
+Stack follows LIFO principle
+main methods: push(), pop(), peek()
+thread-safe but slower
+mostly replaced by Deque in modern Java
+
