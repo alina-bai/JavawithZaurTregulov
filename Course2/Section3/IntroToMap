@@ -1,0 +1,72 @@
+Introduction to Map in Java
+
+Map is an interface in Java used to store data in key-value pairs.
+
+👉 Each element consists of:
+
+a key (unique)
+a value
+How Map works
+Key → Value
+
+"apple"  → 10  
+"banana" → 20
+
+👉 You use the key to get the value.
+
+Important Features
+keys are unique
+values can be duplicated
+each key maps to exactly one value
+not part of Collection interface (but part of Collection Framework)
+Common Map Implementations
+HashMap
+most commonly used
+fast (O(1) average)
+no order
+LinkedHashMap
+maintains insertion order
+TreeMap
+sorted by keys
+slower (O(log n))
+Creating a Map
+import java.util.HashMap;
+import java.util.Map;
+
+Map<String, Integer> map = new HashMap<>();
+Basic Methods
+put()
+map.put("Apple", 10);
+map.put("Banana", 20);
+
+👉 adds or updates value
+
+get()
+map.get("Apple"); // 10
+remove()
+map.remove("Banana");
+containsKey() / containsValue()
+map.containsKey("Apple");
+map.containsValue(10);
+size()
+map.size();
+isEmpty()
+map.isEmpty();
+Iterating over Map
+Using keySet()
+for (String key : map.keySet()) {
+    System.out.println(key + " " + map.get(key));
+}
+Using entrySet() (better)
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + " " + entry.getValue());
+}
+Summary
+Map stores data as key → value
+keys must be unique
+main methods:
+put() → add/update
+get() → retrieve
+remove() → delete
+most used implementation → HashMap
+
