@@ -1,0 +1,85 @@
+HashMap in Java
+
+HashMap is one of the most commonly used classes in Java.
+It stores data as key-value pairs and provides fast access to data.
+
+How HashMap works (simple idea)
+
+HashMap uses a mechanism called hashing.
+
+👉 What happens:
+
+key → преобразуется в число (hash)
+это число определяет, где хранится значение
+при поиске — тот же hash помогает быстро найти значение
+Key Features
+keys are unique
+values can be duplicated
+allows one null key and multiple null values
+not ordered
+not thread-safe
+Creating a HashMap
+import java.util.HashMap;
+import java.util.Map;
+
+Map<String, Integer> map = new HashMap<>();
+Main Methods
+put()
+map.put("Apple", 10);
+map.put("Banana", 20);
+
+👉 adds or updates value
+
+get()
+map.get("Apple"); // 10
+remove()
+map.remove("Banana");
+containsKey() / containsValue()
+map.containsKey("Apple");
+map.containsValue(10);
+size(), isEmpty()
+map.size();
+map.isEmpty();
+Iterating over HashMap
+entrySet() (best way)
+for (Map.Entry<String, Integer> entry : map.entrySet()) {
+    System.out.println(entry.getKey() + " " + entry.getValue());
+}
+keySet()
+for (String key : map.keySet()) {
+    System.out.println(key + " " + map.get(key));
+}
+Internal Structure (important idea)
+data stored in buckets
+collisions can happen (two keys → same bucket)
+Java handles collisions using:
+linked list
+or tree (since Java 8)
+
+👉 this keeps operations fast
+
+Performance
+Operation	Complexity
+put()	O(1) average
+get()	O(1) average
+remove()	O(1) average
+
+Worst case: O(n), but rare
+
+When to use HashMap
+
+Use it when:
+
+you need fast lookup
+you work with key-value data
+order does NOT matter
+When NOT to use
+when order matters → use LinkedHashMap
+when sorting needed → use TreeMap
+in multi-threading → use ConcurrentHashMap
+Summary
+HashMap stores key → value
+very fast (O(1))
+no order
+allows one null key
+most commonly used Map implementation
