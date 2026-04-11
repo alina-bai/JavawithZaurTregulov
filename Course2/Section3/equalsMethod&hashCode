@@ -1,0 +1,96 @@
+equals() and hashCode() in Java
+
+equals() and hashCode() are methods from the Object class.
+
+They are used to compare objects and are especially important when working with collections like HashMap and HashSet.
+
+equals() method
+
+equals() is used to compare object content, not references.
+
+Default behavior
+Object a = new Object();
+Object b = new Object();
+
+a.equals(b); // false
+
+👉 By default, it compares memory addresses (same as ==)
+
+Custom equals()
+class Person {
+    String name;
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person p = (Person) o;
+        return name.equals(p.name);
+    }
+}
+
+👉 Now objects are compared by name
+
+hashCode() method
+
+hashCode() returns an integer representing the object.
+
+int hash = obj.hashCode();
+
+👉 Used internally in hash-based collections like HashMap
+
+Why hashCode is important
+
+In HashMap:
+
+hashCode() → finds bucket
+equals() → compares objects inside bucket
+
+👉 Both methods work together
+
+The Rule (VERY IMPORTANT)
+
+If two objects are equal → they MUST have same hashCode
+
+a.equals(b) == true  →  a.hashCode() == b.hashCode()
+
+❗ If you override equals(), you MUST override hashCode()
+
+Example with both methods
+import java.util.Objects;
+
+class Person {
+    String name;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Person)) return false;
+        Person p = (Person) o;
+        return Objects.equals(name, p.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+}
+What happens if you don’t override hashCode?
+
+👉 Bugs in HashMap / HashSet
+
+Example:
+
+two objects look equal
+but stored in different buckets
+result → duplicates or failed search
+equals vs ==
+equals()	==
+compares content	compares references
+can be overridden	cannot be changed
+Summary
+equals() → compares object content
+hashCode() → used for hashing (fast lookup)
+always override both together
+critical for HashMap, HashSet
+
