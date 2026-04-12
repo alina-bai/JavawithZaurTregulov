@@ -1,0 +1,118 @@
+HashMap in Java (Deep Dive)
+
+HashMap stores data as key → value pairs and provides very fast operations using hashing.
+
+How HashMap Works Internally
+Step-by-step (put operation)
+map.put("Apple", 10);
+
+👉 What happens internally:
+
+hashCode() is called on the key "Apple"
+The hash is converted into a bucket index
+The key-value pair is stored in that bucket
+Buckets (Core Idea)
+
+HashMap stores data in an array of buckets:
+
+[0] → null  
+[1] → (Apple, 10)  
+[2] → (Banana, 20) → (Mango, 30)
+
+👉 Each bucket can contain:
+
+one element
+or multiple elements (in case of collisions)
+Collision (Very Important)
+
+A collision happens when two keys go to the same bucket.
+
+hash("A") → 2  
+hash("B") → 2
+
+👉 Both keys are stored in the same bucket
+
+How Collisions Are Handled
+Before Java 8:
+stored as a LinkedList
+Since Java 8:
+if too many elements → converted into a Red-Black Tree
+
+👉 This improves performance
+
+get() Operation (Important)
+map.get("Apple");
+
+👉 What happens:
+
+hashCode() of the key
+find the bucket
+iterate through elements in the bucket
+use equals() to find exact match
+Why equals() + hashCode() Together
+hashCode() → finds the correct bucket
+equals() → finds the exact key
+
+👉 Both are required for correct behavior
+
+Important Internal Details
+Initial Capacity
+
+Default:
+
+16
+Load Factor
+0.75
+
+👉 When:
+
+size > capacity × loadFactor
+
+→ resize happens
+
+Resize (Rehashing)
+a new array is created (usually doubled in size)
+all elements are rehashed and redistributed
+
+👉 This operation is expensive: O(n)
+
+Time Complexity
+Operation	Average	Worst
+put()	O(1)	O(n)
+get()	O(1)	O(n)
+remove()	O(1)	O(n)
+
+👉 Worst case is rare (thanks to tree structure in Java 8+)
+
+Important Notes
+no guaranteed order
+allows one null key
+not thread-safe
+very fast due to hashing
+Common Mistakes
+
+❌ Not overriding equals() and hashCode()
+❌ Using mutable objects as keys
+❌ Expecting elements to be ordered
+
+Example of a Bad Key
+class User {
+    String name;
+}
+
+👉 Without overriding equals() and hashCode(), this can break HashMap
+
+When to Use HashMap
+fast lookups
+key-value data
+order is not important
+When NOT to Use
+need order → use LinkedHashMap
+need sorting → use TreeMap
+multi-threading → use ConcurrentHashMap
+Summary
+HashMap uses hashing + buckets
+works with hashCode() and equals()
+very fast: O(1)
+handles collisions with list/tree
+resizes when capacity is exceeded
