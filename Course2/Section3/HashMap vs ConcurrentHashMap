@@ -1,0 +1,78 @@
+HashMap vs ConcurrentHashMap in Java
+
+Both HashMap and ConcurrentHashMap store data as key → value pairs,
+but they are used in different situations.
+
+1. Thread Safety
+HashMap
+❌ Not thread-safe
+Multiple threads can break data
+ConcurrentHashMap
+✅ Thread-safe
+Designed for concurrent environments
+2. Performance
+Scenario	HashMap	ConcurrentHashMap
+Single thread	Faster	Slightly slower
+Multi-thread	Unsafe	Fast and safe
+
+👉 ConcurrentHashMap is optimized for concurrency
+
+3. Locking Mechanism
+HashMap
+No locking
+Not safe for concurrent access
+ConcurrentHashMap
+Before Java 8:
+used segment locking
+Java 8+:
+uses fine-grained locking + CAS (Compare-And-Swap)
+
+👉 Instead of locking the whole map:
+
+locks only part of the data
+allows multiple threads to work simultaneously
+4. Null Keys and Values
+Feature	HashMap	ConcurrentHashMap
+null key	✅ allowed	❌ not allowed
+null value	✅ allowed	❌ not allowed
+
+👉 Reason: avoids ambiguity in concurrent operations
+
+5. Internal Behavior
+HashMap
+uses buckets
+collisions → list / tree
+not safe in multi-threading
+ConcurrentHashMap
+similar structure (buckets + tree)
+but designed for safe concurrent access
+reads are mostly non-blocking
+6. Iteration Behavior
+HashMap
+may throw ConcurrentModificationException
+ConcurrentHashMap
+does NOT throw exception
+uses weakly consistent iterator
+
+👉 means:
+
+can read data while it’s changing
+may not reflect latest updates exactly
+7. When to Use
+Use HashMap when:
+single-threaded application
+no shared data
+need maximum performance
+Use ConcurrentHashMap when:
+multi-threaded environment
+shared data between threads
+need safe and fast access
+Summary
+HashMap → fast, but not thread-safe
+ConcurrentHashMap → thread-safe and scalable
+main difference → concurrency handling
+ConcurrentHashMap uses advanced locking (CAS + fine-grained locks)
+Final Thought
+
+👉 If multiple threads are involved → always prefer ConcurrentHashMap
+👉 If not → HashMap is simpler and faster
