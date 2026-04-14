@@ -1,0 +1,88 @@
+TreeMap in Java
+
+TreeMap is a class in Java that implements the Map interface.
+
+It stores data as key → value pairs, but unlike HashMap, it keeps keys sorted.
+
+How TreeMap works
+
+TreeMap is based on a Red-Black Tree (self-balancing binary search tree).
+
+👉 This means:
+
+keys are always sorted
+operations stay efficient
+Key Features
+keys are sorted
+no null keys ❌
+values can be null ✅
+not thread-safe
+slower than HashMap
+Creating a TreeMap
+import java.util.TreeMap;
+import java.util.Map;
+
+Map<String, Integer> map = new TreeMap<>();
+Example
+map.put("Banana", 2);
+map.put("Apple", 1);
+map.put("Orange", 3);
+
+System.out.println(map);
+
+👉 Output:
+
+{Apple=1, Banana=2, Orange=3}
+Sorting Rules
+Default (Natural Order)
+numbers → ascending
+strings → alphabetical
+Custom Sorting (Comparator)
+Map<String, Integer> map = new TreeMap<>(
+    (a, b) -> b.compareTo(a)
+);
+
+👉 reverse order
+
+Common Methods
+put(), get(), remove()
+map.put("Apple", 1);
+map.get("Apple");
+map.remove("Apple");
+First and Last Keys
+map.firstKey();
+map.lastKey();
+Navigational Methods
+map.higherKey("Apple");  // next key
+map.lowerKey("Apple");   // previous key
+map.ceilingKey("Apple"); // >= key
+map.floorKey("Apple");   // <= key
+Performance
+Operation	Complexity
+put()	O(log n)
+get()	O(log n)
+remove()	O(log n)
+
+👉 slower than HashMap, but keeps order
+
+TreeMap vs HashMap
+Feature	TreeMap	HashMap
+Order	Sorted	No order
+Speed	O(log n)	O(1)
+Null key	❌	✅
+Use case	Sorted data	Fast lookup
+When to use TreeMap
+
+Use it when:
+
+you need sorted keys
+you need range queries
+order matters
+When NOT to use
+when performance is critical → use HashMap
+when sorting is not needed
+Summary
+TreeMap stores sorted key-value pairs
+based on Red-Black Tree
+operations are O(log n)
+useful when order matters
