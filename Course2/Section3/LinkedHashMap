@@ -1,0 +1,79 @@
+LinkedHashMap in Java
+
+LinkedHashMap is a class in Java that implements the Map interface.
+
+It stores data as key → value pairs and maintains the insertion order of elements.
+
+How LinkedHashMap works
+
+LinkedHashMap is based on:
+
+a HashMap (for fast access)
+a doubly linked list (to maintain order)
+
+👉 This combination gives:
+
+fast operations
+predictable iteration order
+Key Features
+maintains insertion order
+allows one null key
+allows multiple null values
+not thread-safe
+slightly slower than HashMap
+Creating a LinkedHashMap
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+Map<String, Integer> map = new LinkedHashMap<>();
+Example
+map.put("Banana", 2);
+map.put("Apple", 1);
+map.put("Orange", 3);
+
+System.out.println(map);
+
+👉 Output:
+
+{Banana=2, Apple=1, Orange=3}
+
+👉 Order is preserved as inserted
+
+Access Order (Advanced Feature)
+
+You can make LinkedHashMap order elements by access, not insertion:
+
+Map<String, Integer> map = new LinkedHashMap<>(16, 0.75f, true);
+
+👉 Now:
+
+recently accessed elements move to the end
+Common Methods
+put(), get(), remove()
+map.put("Apple", 1);
+map.get("Apple");
+map.remove("Apple");
+Performance
+Operation	Complexity
+put()	O(1)
+get()	O(1)
+remove()	O(1)
+
+👉 slightly slower than HashMap due to linked list
+
+LinkedHashMap vs HashMap vs TreeMap
+Feature	HashMap	LinkedHashMap	TreeMap
+Order	❌	✅ (insertion/access)	✅ (sorted)
+Speed	Fastest	Slightly slower	Slower
+Structure	Hash table	Hash + linked list	Tree
+Real Use Case
+
+👉 LRU Cache (Least Recently Used)
+
+Because of access order, LinkedHashMap is often used for caching.
+
+Summary
+LinkedHashMap = HashMap + order
+maintains insertion (or access) order
+fast (O(1))
+useful when order matters
