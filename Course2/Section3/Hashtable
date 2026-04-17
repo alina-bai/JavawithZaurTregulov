@@ -1,0 +1,67 @@
+Hashtable in Java
+
+Hashtable is a class in Java that stores data as key → value pairs, similar to HashMap.
+
+👉 Но это старый (legacy) класс, который использовался до появления HashMap.
+
+Key Features
+thread-safe ✅ (synchronized)
+does NOT allow null keys ❌
+does NOT allow null values ❌
+slower than HashMap
+part of legacy Java (older design)
+Creating a Hashtable
+import java.util.Hashtable;
+
+Hashtable<String, Integer> table = new Hashtable<>();
+Common Methods
+put()
+table.put("Apple", 10);
+table.put("Banana", 20);
+get()
+table.get("Apple");
+remove()
+table.remove("Banana");
+containsKey() / containsValue()
+table.containsKey("Apple");
+table.containsValue(10);
+Thread Safety
+
+👉 Hashtable is fully synchronized
+
+This means:
+
+every method is locked
+only one thread can access it at a time
+
+👉 Result:
+
+safe ✅
+but slow ❌
+Null Handling
+table.put(null, 10);   // ❌ throws exception
+table.put("A", null);  // ❌ throws exception
+Hashtable vs HashMap
+Feature	Hashtable	HashMap
+Thread-safe	✅	❌
+Performance	Slower	Faster
+Null key/value	❌	✅
+Modern usage	Rare	Very common
+Hashtable vs ConcurrentHashMap
+Feature	Hashtable	ConcurrentHashMap
+Locking	Full lock	Fine-grained
+Performance	Slow	Fast
+Modern	❌	✅
+When to use Hashtable
+
+👉 Almost never in modern Java
+
+Use instead:
+
+HashMap → for single-threaded
+ConcurrentHashMap → for multi-threaded
+Summary
+Hashtable is a legacy thread-safe map
+uses full synchronization (slow)
+does not allow null keys/values
+mostly replaced by HashMap and ConcurrentHashMap
