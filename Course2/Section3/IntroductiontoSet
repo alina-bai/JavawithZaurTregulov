@@ -1,0 +1,73 @@
+Introduction to Set in Java
+
+Set is an interface in Java used to store a collection of unique elements.
+
+👉 Main idea:
+
+no duplicates allowed
+порядок обычно не гарантируется (зависит от реализации)
+Key Features of Set
+does NOT allow duplicates
+can contain null (зависит от реализации)
+not index-based (нет get(index))
+part of the Collection Framework
+Common Set Implementations
+HashSet → most used, no order
+LinkedHashSet → maintains insertion order
+TreeSet → sorted elements
+HashSet in Java
+
+HashSet is the most commonly used implementation of Set.
+
+👉 It is based on hashing (internally uses a HashMap).
+
+How HashSet works (simple idea)
+when you add an element → Java calculates its hashCode()
+uses equals() to check duplicates
+if element already exists → it will NOT be added
+Creating a HashSet
+import java.util.HashSet;
+import java.util.Set;
+
+Set<String> set = new HashSet<>();
+Adding Elements
+set.add("Apple");
+set.add("Banana");
+set.add("Apple"); // duplicate → ignored
+Removing Elements
+set.remove("Banana");
+Checking Elements
+set.contains("Apple");
+Iterating over HashSet
+for (String item : set) {
+    System.out.println(item);
+}
+Important Features of HashSet
+no duplicates
+no guaranteed order
+allows one null value
+not thread-safe
+fast operations
+Performance
+Operation	Complexity
+add()	O(1)
+remove()	O(1)
+contains()	O(1)
+HashSet vs List
+Feature	HashSet	List
+Duplicates	❌	✅
+Order	❌	✅
+Index access	❌	✅
+When to use HashSet
+
+Use it when:
+
+you need unique elements
+fast lookup is important
+order does NOT matter
+Summary
+Set stores unique elements
+HashSet uses hashing
+very fast: O(1)
+ignores duplicates
+most commonly used Set implementation
