@@ -1,0 +1,82 @@
+TreeSet in Java
+
+TreeSet is a class in Java that implements the Set interface.
+
+It stores unique elements like HashSet, but keeps them sorted.
+
+How TreeSet works
+
+TreeSet is based on a Red-Black Tree (self-balancing binary search tree).
+
+👉 This means:
+
+elements are always sorted
+no duplicates allowed
+Key Features
+stores unique elements
+elements are sorted
+does NOT allow null ❌
+not thread-safe
+slower than HashSet
+Creating a TreeSet
+import java.util.TreeSet;
+import java.util.Set;
+
+Set<String> set = new TreeSet<>();
+Example
+set.add("Banana");
+set.add("Apple");
+set.add("Orange");
+
+System.out.println(set);
+
+👉 Output:
+
+[Apple, Banana, Orange]
+Sorting Rules
+Default (Natural Order)
+numbers → ascending
+strings → alphabetical
+Custom Sorting (Comparator)
+Set<String> set = new TreeSet<>(
+    (a, b) -> b.compareTo(a)
+);
+
+👉 reverse order
+
+Common Methods
+set.add("Apple");
+set.remove("Apple");
+set.contains("Apple");
+set.size();
+Navigational Methods
+set.first();
+set.last();
+
+set.higher("Apple");  // next element
+set.lower("Apple");   // previous element
+Performance
+Operation	Complexity
+add()	O(log n)
+remove()	O(log n)
+contains()	O(log n)
+TreeSet vs HashSet
+Feature	TreeSet	HashSet
+Order	Sorted	No order
+Speed	O(log n)	O(1)
+Null	❌	✅ (one)
+When to use TreeSet
+
+Use it when:
+
+you need sorted unique elements
+you need range operations
+order matters
+When NOT to use
+when performance is critical → use HashSet
+when sorting is not needed
+Summary
+TreeSet stores sorted unique elements
+based on Red-Black Tree
+slower than HashSet
+useful when order matters
