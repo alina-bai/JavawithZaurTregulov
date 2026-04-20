@@ -1,0 +1,76 @@
+LinkedHashSet in Java
+
+LinkedHashSet is a class in Java that implements the Set interface.
+
+It stores unique elements like HashSet, but also preserves insertion order.
+
+How LinkedHashSet works
+
+LinkedHashSet is based on:
+
+a HashSet (for fast operations)
+a linked list (to maintain order)
+
+👉 This gives:
+
+uniqueness
+predictable order
+good performance
+Key Features
+no duplicates
+maintains insertion order
+allows one null value
+not thread-safe
+slightly slower than HashSet
+Creating a LinkedHashSet
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+Set<String> set = new LinkedHashSet<>();
+Example
+set.add("Banana");
+set.add("Apple");
+set.add("Orange");
+
+System.out.println(set);
+
+👉 Output:
+
+[Banana, Apple, Orange]
+
+👉 Order is preserved as inserted
+
+Common Methods
+set.add("Apple");
+set.remove("Apple");
+set.contains("Apple");
+set.size();
+Performance
+Operation	Complexity
+add()	O(1)
+remove()	O(1)
+contains()	O(1)
+
+👉 slightly slower than HashSet due to maintaining order
+
+LinkedHashSet vs HashSet vs TreeSet
+Feature	HashSet	LinkedHashSet	TreeSet
+Duplicates	❌	❌	❌
+Order	❌	✅ (insertion)	✅ (sorted)
+Speed	Fastest	Slightly slower	Slowest
+When to use LinkedHashSet
+
+Use it when:
+
+you need unique elements
+you want to preserve insertion order
+performance still matters
+When NOT to use
+need sorted data → use TreeSet
+order does not matter → use HashSet
+Summary
+LinkedHashSet = HashSet + order
+stores unique elements
+maintains insertion order
+fast (O(1))
+good balance between speed and order
