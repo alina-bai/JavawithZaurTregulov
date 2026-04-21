@@ -1,0 +1,83 @@
+Introduction to Queue in Java
+
+Queue is an interface in Java used to store elements in a FIFO (First In, First Out) order.
+
+👉 This means:
+
+the first element added is the first one removed
+
+Example:
+
+Add: 1 → 2 → 3  
+Remove: 1 → 2 → 3
+Where Queue is used
+task processing
+messaging systems
+scheduling
+buffering data
+Common Queue Implementations
+LinkedList → most simple implementation
+PriorityQueue → sorted by priority
+ArrayDeque → modern and fast
+LinkedList as a Queue
+
+LinkedList can be used as a Queue because it implements the Queue interface.
+
+Creating a Queue
+import java.util.Queue;
+import java.util.LinkedList;
+
+Queue<String> queue = new LinkedList<>();
+Main Queue Methods
+add() / offer()
+queue.add("Apple");
+queue.offer("Banana");
+
+👉 both add elements to the queue
+
+add() → throws exception if fails
+offer() → returns false if fails
+remove() / poll()
+queue.remove();
+queue.poll();
+
+👉 remove first element
+
+remove() → throws exception if empty
+poll() → returns null if empty
+element() / peek()
+queue.element();
+queue.peek();
+
+👉 get first element (without removing)
+
+element() → exception if empty
+peek() → returns null if empty
+Example
+Queue<Integer> queue = new LinkedList<>();
+
+queue.add(1);
+queue.add(2);
+queue.add(3);
+
+System.out.println(queue.poll()); // 1
+System.out.println(queue.peek()); // 2
+Important Features
+FIFO order
+allows duplicates
+allows null (depends on implementation)
+not thread-safe
+Queue vs Stack
+Queue	Stack
+FIFO	LIFO
+First in → first out	Last in → first out
+Performance
+add/remove from ends → O(1)
+efficient for queue operations
+Summary
+Queue follows FIFO principle
+LinkedList can be used as a Queue
+main methods:
+offer() / add()
+poll() / remove()
+peek() / element()
