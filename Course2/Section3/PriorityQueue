@@ -1,0 +1,79 @@
+PriorityQueue in Java
+
+PriorityQueue is a class in Java that implements the Queue interface.
+
+Unlike a regular queue (FIFO), it processes elements based on priority, not order of insertion.
+
+How it works
+
+👉 Elements are ordered automatically:
+
+smallest element first (by default)
+uses natural ordering or a Comparator
+Example idea
+Add: 5 → 1 → 3  
+Remove: 1 → 3 → 5
+
+👉 Not FIFO — sorted order
+
+Creating a PriorityQueue
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+Queue<Integer> queue = new PriorityQueue<>();
+Adding Elements
+queue.add(5);
+queue.add(1);
+queue.add(3);
+Removing Elements
+queue.poll(); // removes smallest element
+Viewing Element
+queue.peek(); // shows smallest element
+Example
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+pq.add(5);
+pq.add(1);
+pq.add(3);
+
+System.out.println(pq.poll()); // 1
+System.out.println(pq.poll()); // 3
+Custom Ordering (Comparator)
+PriorityQueue<Integer> pq = new PriorityQueue<>(
+    (a, b) -> b - a
+);
+
+👉 Now it works as max-heap (largest first)
+
+Important Features
+not FIFO
+sorted by priority
+allows duplicates
+does NOT allow null ❌
+not thread-safe
+Internal Structure
+
+👉 Based on a heap (binary heap)
+
+root = highest priority element
+efficient operations
+Performance
+Operation	Complexity
+add()	O(log n)
+poll()	O(log n)
+peek()	O(1)
+When to use PriorityQueue
+
+Use it when:
+
+you need priority-based processing
+tasks have importance levels
+scheduling systems
+When NOT to use
+when strict FIFO order needed → use Queue
+when order must be stable → use other structures
+Summary
+PriorityQueue orders elements by priority
+uses heap structure
+fast and efficient
+not based on insertion order
