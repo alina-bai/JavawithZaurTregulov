@@ -1,0 +1,82 @@
+Introduction to Deque in Java
+
+Deque (Double-Ended Queue) is an interface in Java that allows adding and removing elements from both ends.
+
+👉 This means:
+
+you can work like a queue (FIFO)
+or like a stack (LIFO)
+Key Idea
+Front ← [ elements ] → Back
+
+👉 You can add/remove from:
+
+front
+back
+Common Implementations
+ArrayDeque → most used (fast, modern)
+LinkedList → also supports Deque
+ArrayDeque in Java
+
+ArrayDeque is a class that implements Deque.
+
+👉 It is based on a resizable array and is:
+
+faster than Stack
+faster than LinkedList (in most cases)
+Creating an ArrayDeque
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+Deque<String> deque = new ArrayDeque<>();
+Adding Elements
+deque.addFirst("A"); // front
+deque.addLast("B");  // back
+
+deque.offerFirst("C");
+deque.offerLast("D");
+Removing Elements
+deque.removeFirst();
+deque.removeLast();
+
+deque.pollFirst();
+deque.pollLast();
+Accessing Elements
+deque.peekFirst();
+deque.peekLast();
+Using as Stack (LIFO)
+deque.push("A");
+deque.push("B");
+
+deque.pop(); // B
+Using as Queue (FIFO)
+deque.offer("A");
+deque.offer("B");
+
+deque.poll(); // A
+Important Features
+works as both stack and queue
+does NOT allow null ❌
+not thread-safe
+very fast
+Performance
+Operation	Complexity
+add/remove	O(1)
+access ends	O(1)
+ArrayDeque vs LinkedList
+Feature	ArrayDeque	LinkedList
+Performance	Faster	Slower
+Memory	Less	More
+Usage	Preferred	Less common
+When to use ArrayDeque
+
+Use it when:
+
+you need stack or queue behavior
+performance matters
+modern Java approach
+Summary
+Deque allows operations on both ends
+ArrayDeque is the best general-purpose implementation
+can be used as stack or queue
+fast and efficient
