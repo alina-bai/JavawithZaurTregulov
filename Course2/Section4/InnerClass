@@ -1,0 +1,66 @@
+Inner Class in Java
+
+An inner class is a non-static class defined inside another class.
+
+👉 It is tightly connected to an instance of the outer class.
+
+Basic Example
+class Outer {
+    class Inner {
+        void print() {
+            System.out.println("Hello from inner class");
+        }
+    }
+}
+Creating an Object
+Outer outer = new Outer();
+Outer.Inner inner = outer.new Inner();
+
+inner.print();
+
+👉 Inner class requires an outer class object
+
+Key Features
+does NOT use static
+depends on outer class instance
+can access all members of outer class (even private)
+used for strong logical connection
+Accessing Outer Class Members
+class Outer {
+    private int x = 10;
+
+    class Inner {
+        void print() {
+            System.out.println(x); // ✅ can access private field
+        }
+    }
+}
+Why use Inner Class?
+
+Use it when:
+
+one class is strongly related to another
+you need access to outer class data
+want better encapsulation
+Real-Life Idea
+
+👉 Inner class = “helper” that belongs to a specific object
+
+Example:
+
+Car → inner class Engine
+User → inner class Address
+Inner Class vs Static Nested Class
+Feature	Inner Class	Static Nested Class
+Needs outer object	✅	❌
+Access instance fields	✅	❌
+Access static fields	✅	✅
+Important Notes
+cannot exist without outer object
+often used for cleaner design
+can make code more readable when used correctly
+Summary
+inner class = class inside another class (non-static)
+tied to outer class instance
+can access all outer class members
+useful for encapsulation and structure
