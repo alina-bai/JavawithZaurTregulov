@@ -1,0 +1,68 @@
+Local Inner Class in Java
+
+A local inner class is a class defined inside a method.
+
+👉 It is used only within that method and cannot be accessed from outside.
+
+Basic Example
+class Outer {
+    void method() {
+        class Local {
+            void print() {
+                System.out.println("Hello from local inner class");
+            }
+        }
+
+        Local obj = new Local();
+        obj.print();
+    }
+}
+Key Features
+defined inside a method
+accessible only within that method
+cannot be used outside
+does NOT use static
+has limited scope
+Accessing Variables
+
+Local inner class can access:
+
+outer class fields
+local variables (only if they are final or effectively final)
+Example
+class Outer {
+    void method() {
+        int x = 10; // effectively final
+
+        class Local {
+            void print() {
+                System.out.println(x);
+            }
+        }
+
+        new Local().print();
+    }
+}
+
+👉 If you change x, it will cause an error
+
+Why use Local Inner Class?
+
+Use it when:
+
+class is needed only inside one method
+want to keep code clean and scoped
+logic is small and specific
+When NOT to use
+if class is reused in multiple places
+if logic is large or complex
+Local Inner vs Inner Class
+Feature	Local Inner Class	Inner Class
+Defined in	method	class
+Scope	limited to method	whole class
+Access outside	❌	✅
+Summary
+local inner class = class inside a method
+used only within that method
+can access effectively final variables
+helps keep code clean and limited in scope
