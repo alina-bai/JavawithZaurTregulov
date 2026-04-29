@@ -1,0 +1,64 @@
+Anonymous Class in Java
+
+An anonymous class is a class without a name that is created and used in one place.
+
+👉 It is used when you need a quick implementation of a class or interface.
+
+Basic Idea
+
+Instead of creating a separate class, you define it inline.
+
+Example with Interface
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Running...");
+    }
+};
+
+👉 No class name — created on the spot
+
+Example with Class
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+Animal a = new Animal() {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+};
+Key Features
+no class name
+used once
+defined and instantiated at the same time
+can extend a class or implement an interface
+When to use Anonymous Class
+
+Use it when:
+
+implementation is small
+needed only in one place
+you want quick and simple code
+Limitations
+cannot have constructors
+harder to read if too big
+cannot be reused
+Anonymous Class vs Lambda
+Anonymous Class	Lambda
+works with class or interface	works only with functional interface
+more verbose	shorter
+can have multiple methods	only one method
+Example with Lambda (modern way)
+Runnable r = () -> System.out.println("Running...");
+
+👉 Cleaner and preferred in modern Java
+
+Summary
+anonymous class = class without name
+used for quick one-time implementation
+can extend class or implement interface
+often replaced by lambda in modern Java
