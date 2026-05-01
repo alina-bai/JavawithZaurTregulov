@@ -1,0 +1,73 @@
+Lambda Expressions in Java
+
+A lambda expression is a short way to write a function (method) without creating a class.
+
+👉 Introduced in Java 8 to make code cleaner and more concise.
+
+Basic Syntax
+(parameters) -> expression
+
+или
+
+(parameters) -> {
+    // multiple lines
+}
+Simple Example
+Runnable r = () -> System.out.println("Hello");
+
+👉 вместо:
+
+Runnable r = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello");
+    }
+};
+Functional Interface (Important)
+
+👉 Lambda works only with functional interfaces
+
+A functional interface:
+
+has one abstract method
+
+Examples:
+
+Runnable
+Comparator
+Callable
+Example with Comparator
+list.sort((a, b) -> a.compareTo(b));
+Lambda Variations
+No parameters
+() -> System.out.println("Hello")
+One parameter
+x -> x * 2
+Multiple parameters
+(a, b) -> a + b
+Multiple statements
+(a, b) -> {
+    int sum = a + b;
+    return sum;
+}
+Why use Lambda?
+less code
+more readable
+functional programming style
+widely used with collections and streams
+Common Use Cases
+sorting (Comparator)
+filtering
+iteration (forEach)
+Example with forEach
+list.forEach(item -> System.out.println(item));
+Lambda vs Anonymous Class
+Lambda	Anonymous Class
+shorter	longer
+cleaner	more verbose
+only functional interface	can implement any class/interface
+Summary
+lambda = short function syntax
+works with functional interfaces
+reduces boilerplate code
+widely used in modern Java
