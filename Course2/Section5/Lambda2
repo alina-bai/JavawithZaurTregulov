@@ -1,0 +1,91 @@
+1. Functional Interfaces (Deeper)
+
+A lambda works only with a functional interface (one abstract method).
+
+👉 Example:
+
+@FunctionalInterface
+interface MyFunction {
+    int apply(int a, int b);
+}
+
+Using lambda:
+
+MyFunction sum = (a, b) -> a + b;
+2. Built-in Functional Interfaces
+
+Java provides ready-to-use interfaces:
+
+Predicate (returns boolean)
+Predicate<Integer> isEven = x -> x % 2 == 0;
+Function (takes input, returns result)
+Function<Integer, String> convert = x -> "Number: " + x;
+Consumer (takes input, returns nothing)
+Consumer<String> print = x -> System.out.println(x);
+Supplier (no input, returns value)
+Supplier<Double> random = () -> Math.random();
+3. Variable Capture (Important)
+
+Lambdas can use variables from outside, but:
+
+👉 they must be final or effectively final
+
+int x = 10;
+
+Runnable r = () -> {
+    System.out.println(x);
+};
+
+❌ Not allowed:
+
+int x = 10;
+x = 20; // change
+
+Runnable r = () -> System.out.println(x); // error
+4. Lambda and “this”
+
+👉 In lambda:
+
+this refers to the outer class, not lambda itself
+
+This is different from anonymous classes.
+
+5. Method References (Cleaner Lambda)
+
+Instead of:
+
+list.forEach(x -> System.out.println(x));
+
+You can write:
+
+list.forEach(System.out::println);
+
+👉 This is called method reference
+
+Types of Method References
+Class::staticMethod
+object::instanceMethod
+Class::new
+6. Lambdas with Collections
+Filtering
+list.removeIf(x -> x.startsWith("A"));
+Sorting
+list.sort((a, b) -> a.compareTo(b));
+forEach
+list.forEach(x -> System.out.println(x));
+7. Common Mistakes
+
+❌ Trying to use lambda without functional interface
+❌ Modifying captured variables
+❌ Writing too complex lambdas (hard to read)
+
+8. When NOT to use Lambda
+complex logic → use normal methods
+multiple responsibilities
+when readability suffers
+Summary
+lambda works with functional interfaces
+can capture effectively final variables
+supports method references
+widely used with collections
+improves readability (if used correctly)
