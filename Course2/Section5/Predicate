@@ -1,0 +1,59 @@
+Predicate in Java
+
+Predicate is a functional interface that takes one input and returns a boolean value.
+
+👉 Used to test a condition
+
+Syntax
+Predicate<T>
+
+👉 where T — тип входного значения
+
+Basic Example
+import java.util.function.Predicate;
+
+Predicate<Integer> isEven = x -> x % 2 == 0;
+
+System.out.println(isEven.test(4)); // true
+Main Method
+test()
+boolean result = predicate.test(value);
+
+👉 returns true or false
+
+Combining Predicates
+and()
+Predicate<Integer> greaterThan10 = x -> x > 10;
+Predicate<Integer> isEven = x -> x % 2 == 0;
+
+Predicate<Integer> combined = greaterThan10.and(isEven);
+
+combined.test(12); // true
+or()
+Predicate<Integer> p = greaterThan10.or(isEven);
+negate()
+Predicate<Integer> notEven = isEven.negate();
+Example with Collections
+List<String> list = List.of("Apple", "Banana", "Avocado");
+
+list.removeIf(s -> s.startsWith("A"));
+
+👉 uses Predicate inside
+
+Real Use Cases
+filtering data
+validation
+conditions in streams
+Example with Stream
+list.stream()
+    .filter(s -> s.length() > 5)
+    .forEach(System.out::println);
+Why use Predicate?
+reusable conditions
+cleaner code
+works perfectly with lambda and streams
+Summary
+Predicate → input → boolean
+main method: test()
+supports combining (and, or, negate)
+widely used in filtering and streams
