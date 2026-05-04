@@ -1,0 +1,59 @@
+Supplier in Java
+
+Supplier is a functional interface that does not take any input but returns a value.
+
+👉 Think of it as:
+“give me something”
+
+Syntax
+Supplier<T>
+
+👉 where T — тип возвращаемого значения
+
+Basic Example
+import java.util.function.Supplier;
+
+Supplier<String> supplier = () -> "Hello";
+
+System.out.println(supplier.get()); // Hello
+Main Method
+get()
+T value = supplier.get();
+
+👉 returns a value
+
+Example with Random Values
+Supplier<Double> random = () -> Math.random();
+
+System.out.println(random.get());
+Example with Object Creation
+Supplier<List<String>> listSupplier = () -> new ArrayList<>();
+
+List<String> list = listSupplier.get();
+Real Use Cases
+generating values
+lazy initialization
+creating objects
+default values
+Supplier vs Other Interfaces
+Interface	Input	Output
+Predicate	1	boolean
+Function	1	value
+Consumer	1	void
+Supplier	0	value
+Using Supplier with Optional
+Optional<String> optional = Optional.empty();
+
+String value = optional.orElseGet(() -> "Default value");
+
+👉 value generated only if needed
+
+Why use Supplier?
+clean way to generate data
+lazy execution
+avoids unnecessary computations
+Summary
+Supplier → no input → returns value
+main method: get()
+used for generating data
+useful for lazy logic
