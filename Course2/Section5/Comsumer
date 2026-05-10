@@ -1,0 +1,70 @@
+Consumer in Java
+
+Consumer is a functional interface that takes one input and returns nothing.
+
+👉 It is used when you want to consume/use data without returning a result.
+
+Syntax
+Consumer<T>
+
+👉 where T — тип входного значения
+
+Basic Example
+import java.util.function.Consumer;
+
+Consumer<String> print = x -> System.out.println(x);
+
+print.accept("Hello");
+Main Method
+accept()
+consumer.accept(value);
+
+👉 takes a value and performs some action
+
+Example with List
+List<String> list = List.of("Apple", "Banana", "Orange");
+
+list.forEach(x -> System.out.println(x));
+
+👉 forEach() uses Consumer
+
+Chaining Consumers
+andThen()
+Consumer<String> first = x -> System.out.println(x);
+Consumer<String> second = x -> System.out.println(x.toUpperCase());
+
+Consumer<String> combined = first.andThen(second);
+
+combined.accept("hello");
+Real Use Cases
+printing data
+logging
+updating objects
+processing collections
+Consumer vs Other Interfaces
+Interface	Input	Output
+Predicate	1	boolean
+Function	1	value
+Consumer	1	void
+Supplier	0	value
+Important Note
+
+👉 Consumer changes or uses data, but does NOT return anything.
+
+Example with Object
+Consumer<List<String>> addItem = list -> list.add("Apple");
+
+List<String> fruits = new ArrayList<>();
+
+addItem.accept(fruits);
+
+System.out.println(fruits);
+Why use Consumer?
+cleaner functional-style code
+useful in streams and collections
+perfect for actions without return value
+Summary
+Consumer takes input and returns nothing
+main method: accept()
+often used with forEach()
+useful for processing and actions
