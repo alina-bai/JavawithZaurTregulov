@@ -1,0 +1,88 @@
+Function in Java
+
+Function is a functional interface that takes one input and returns a result.
+
+👉 Think of it as:
+input → transformation → output
+
+Syntax
+Function<T, R>
+
+Where:
+
+T → input type
+R → return type
+Basic Example
+import java.util.function.Function;
+
+Function<Integer, String> convert =
+        x -> "Number: " + x;
+
+System.out.println(convert.apply(5));
+
+👉 Output:
+
+Number: 5
+Main Method
+apply()
+R result = function.apply(value);
+
+👉 takes input and returns transformed result
+
+Example: Square Number
+Function<Integer, Integer> square = x -> x * x;
+
+System.out.println(square.apply(4)); // 16
+Function Chaining
+andThen()
+Function<Integer, Integer> multiply = x -> x * 2;
+Function<Integer, Integer> add = x -> x + 3;
+
+Function<Integer, Integer> result =
+        multiply.andThen(add);
+
+System.out.println(result.apply(5));
+
+👉 Steps:
+
+5 * 2 = 10
+10 + 3 = 13
+compose()
+Function<Integer, Integer> result =
+        multiply.compose(add);
+
+👉 Steps:
+
+5 + 3 = 8
+8 * 2 = 16
+Identity Function
+Function<String, String> identity =
+        Function.identity();
+
+👉 returns the same value
+
+Real Use Cases
+data transformation
+mapping objects
+stream operations
+formatting data
+Example with Stream
+list.stream()
+    .map(x -> x.toUpperCase())
+    .forEach(System.out::println);
+
+👉 map() uses Function
+
+Function vs Other Interfaces
+Interface	Input	Output
+Predicate	1	boolean
+Function	1	value
+Consumer	1	void
+Supplier	0	value
+Summary
+Function<T, R> transforms data
+main method: apply()
+supports chaining with:
+andThen()
+compose()
+heavily used in Stream API
