@@ -1,0 +1,111 @@
+Introduction to Stream API in Java
+
+Stream API was introduced in Java 8 to process collections in a functional and declarative way.
+
+👉 It allows operations like:
+
+filtering
+mapping
+sorting
+collecting data
+
+with cleaner and shorter code.
+
+What is a Stream?
+
+A Stream is a sequence of elements that supports operations on data.
+
+👉 Important:
+
+stream does NOT store data
+it processes data from collections, arrays, etc.
+Creating a Stream
+From List
+List<String> list = List.of("Apple", "Banana", "Orange");
+
+Stream<String> stream = list.stream();
+Basic Stream Example
+list.stream()
+    .filter(x -> x.startsWith("A"))
+    .forEach(System.out::println);
+
+👉 Output:
+
+Apple
+Stream Pipeline
+
+A stream usually has 3 parts:
+
+source → intermediate operations → terminal operation
+1. Source
+
+Where data comes from:
+
+list.stream()
+2. Intermediate Operations
+
+They transform the stream.
+
+Examples:
+
+filter()
+map()
+sorted()
+
+👉 They are lazy (do nothing until terminal operation)
+
+3. Terminal Operation
+
+Produces final result.
+
+Examples:
+
+forEach()
+collect()
+count()
+Example Pipeline
+list.stream()
+    .filter(x -> x.length() > 5)
+    .map(String::toUpperCase)
+    .forEach(System.out::println);
+Common Stream Methods
+Method	Purpose
+filter()	select elements
+map()	transform elements
+sorted()	sort elements
+distinct()	remove duplicates
+limit()	limit elements
+collect()	collect result
+Stream Does NOT Change Collection
+list.stream().filter(x -> x.startsWith("A"));
+
+👉 Original list stays unchanged
+
+Why use Streams?
+less boilerplate code
+more readable
+functional programming style
+easier collection processing
+Stream vs Loop
+Traditional loop
+for (String s : list) {
+    if (s.startsWith("A")) {
+        System.out.println(s);
+    }
+}
+Stream version
+list.stream()
+    .filter(s -> s.startsWith("A"))
+    .forEach(System.out::println);
+Important Notes
+streams are usually used once
+streams are lazy
+terminal operation starts execution
+Summary
+Stream API processes data from collections
+supports functional-style programming
+consists of:
+source
+intermediate operations
+terminal operation
+makes code cleaner and more expressive
