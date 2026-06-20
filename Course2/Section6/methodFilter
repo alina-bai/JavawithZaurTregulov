@@ -1,0 +1,189 @@
+filter() is an intermediate operation that selects elements from a stream based on a condition.
+
+It accepts a Predicate<T> and returns a new stream containing only elements that satisfy the condition.
+
+Method Signature
+Stream<T> filter(Predicate<? super T> predicate)
+
+Let's break it down:
+
+Stream<T>
+
+Return type.
+
+👉 filter() returns a new Stream, not a List.
+
+Predicate<? super T>
+
+Parameter type.
+
+👉 Predicate is a functional interface:
+
+@FunctionalInterface
+public interface Predicate<T> {
+    boolean test(T t);
+}
+
+It takes one value and returns:
+
+true → keep element
+false → remove element
+What Happens Internally
+
+Given:
+
+List<Integer> numbers =
+        List.of(1, 2, 3, 4, 5);
+numbers.stream()
+       .filter(x -> x % 2 == 0)
+       .forEach(System.out::println);
+
+Java does roughly this:
+
+for (Integer x : numbers) {
+    if (x % 2 == 0) {
+        System.out.println(x);
+    }
+}
+
+Output:
+
+2
+4
+filter() Is Lazy
+
+This is very important.
+
+Stream<String> stream =
+        list.stream()
+            .filter(s -> s.startsWith("A"));
+
+At this point:
+
+👉 Nothing happens yet.
+
+The stream starts processing only when a terminal operation appears.
+
+Example:
+
+stream.forEach(System.out::println);
+
+Now execution begins.
+
+filter() Does Not Modify Data
+List<String> fruits =
+        List.of("Apple", "Banana", "Avocado");
+
+fruits.stream()
+      .filter(s -> s.startsWith("A"));
+
+Original list:
+
+[Apple, Banana, Avocado]
+
+Still unchanged.
+
+Chaining Multiple Filters
+list.stream()
+    .filter(s -> s.length() > 5)
+    .filter(s -> s.startsWith("A"))
+    .forEach(System.out::println);
+
+Processing:
+
+Apple     -> keep
+Banana    -> remove
+Avocado   -> keep
+
+Output:
+
+Avocado
+Using Predicate Variables
+
+Instead of:
+
+.filter(x -> x > 10)
+
+You can write:
+
+Predicate<Integer> greaterThanTen =
+        x -> x > 10;
+
+numbers.stream()
+       .filter(greaterThanTen)
+       .forEach(System.out::println);
+Combining Predicates
+and()
+Predicate<Integer> positive =
+        x -> x > 0;
+
+Predicate<Integer> even =
+        x -> x % 2 == 0;
+
+numbers.stream()
+       .filter(positive.and(even))
+       .forEach(System.out::println);
+or()
+.filter(positive.or(even))
+negate()
+.filter(even.negate())
+
+👉 selects odd numbers
+
+Return Type
+
+Many beginners think:
+
+List<String> result =
+        list.stream()
+            .filter(...)
+
+❌ Compilation error
+
+Because filter() returns:
+
+Stream<String>
+
+To get a List:
+
+List<String> result =
+        list.stream()
+            .filter(...)
+            .toList();
+Complexity
+
+For a stream with n elements:
+
+.filter(...)
+
+Time complexity:
+
+O(n)
+
+Because every element must be checked.
+
+Common Interview Questions
+Does filter() change the original collection?
+
+❌ No
+
+Is filter() terminal or intermediate?
+
+✅ Intermediate
+
+What does filter() return?
+
+✅ Stream
+
+Which functional interface does filter() use?
+
+✅ Predicate
+
+Summary
+filter() selects elements based on a condition
+accepts a Predicate
+returns a new Stream
+does not modify the original collection
+is a lazy intermediate operation
+complexity is O(n)
+one of the most commonly used Stream methods
