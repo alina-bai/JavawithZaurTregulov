@@ -1,0 +1,180 @@
+forEach() Method in Java Stream API
+
+forEach() is a terminal operation that performs an action on each element of a stream.
+
+👉 It processes every element and returns nothing.
+
+Method Signature
+void forEach(Consumer<? super T> action)
+
+Let's break it down:
+
+void
+
+forEach() returns nothing.
+
+Consumer<? super T>
+
+The method accepts a Consumer.
+
+A Consumer:
+
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t);
+}
+
+👉 Takes one value and performs an action.
+
+Basic Example
+List<String> fruits =
+        List.of("Apple", "Banana", "Orange");
+
+fruits.stream()
+      .forEach(System.out::println);
+
+Output:
+
+Apple
+Banana
+Orange
+What Happens Internally
+
+This:
+
+fruits.stream()
+      .forEach(System.out::println);
+
+is similar to:
+
+for (String fruit : fruits) {
+    System.out.println(fruit);
+}
+Using Lambda
+fruits.stream()
+      .forEach(fruit -> System.out.println(fruit));
+Using Method Reference
+
+Instead of:
+
+fruit -> System.out.println(fruit)
+
+you can write:
+
+System.out::println
+
+Full example:
+
+fruits.stream()
+      .forEach(System.out::println);
+forEach() Is a Terminal Operation
+
+This is important.
+
+fruits.stream()
+      .filter(f -> f.startsWith("A"))
+      .forEach(System.out::println);
+
+👉 The stream starts executing only when forEach() is reached.
+
+Without a terminal operation:
+
+fruits.stream()
+      .filter(f -> f.startsWith("A"));
+
+Nothing happens.
+
+forEach() with Objects
+List<Person> people = List.of(
+        new Person("John"),
+        new Person("Alice")
+);
+
+people.stream()
+      .forEach(person ->
+              System.out.println(person.getName()));
+Common Use Cases
+Printing
+list.forEach(System.out::println);
+Logging
+list.forEach(item ->
+        logger.info(item));
+Updating Objects
+people.forEach(person ->
+        person.setActive(true));
+Difference Between map() and forEach()
+map()
+
+Transforms data.
+
+list.stream()
+    .map(String::toUpperCase);
+
+Input:
+
+apple
+
+Output:
+
+APPLE
+forEach()
+
+Performs an action.
+
+list.stream()
+    .forEach(System.out::println);
+
+Input:
+
+apple
+
+Output:
+
+apple
+
+👉 No transformation.
+
+Stream Example
+List<String> result =
+        fruits.stream()
+              .filter(f -> f.startsWith("A"))
+              .map(String::toUpperCase)
+              .toList();
+
+Here:
+
+filter() selects data
+map() transforms data
+
+If we only want to print:
+
+fruits.stream()
+      .filter(f -> f.startsWith("A"))
+      .forEach(System.out::println);
+Common Interview Questions
+Is forEach() terminal or intermediate?
+
+✅ Terminal
+
+What functional interface does forEach() use?
+
+✅ Consumer
+
+What does forEach() return?
+
+✅ void
+
+Can forEach() modify elements?
+
+✅ Yes, if objects are mutable.
+
+Summary
+forEach() processes every element in a stream
+accepts a Consumer
+returns void
+is a terminal operation
+commonly used for:
+printing
+logging
+executing actions
+does not transform data
