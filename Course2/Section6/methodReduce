@@ -1,0 +1,210 @@
+reduce() Method in Java Stream API
+
+reduce() is a terminal operation that combines all elements of a stream into a single result.
+
+👉 Think of it as:
+
+many values → one value
+
+Examples:
+
+sum of numbers
+product of numbers
+longest string
+combining text
+Why is it called "reduce"?
+
+Because it reduces multiple elements to one result.
+
+Example:
+
+1, 2, 3, 4, 5
+
+becomes:
+
+15
+First Version of reduce()
+Method Signature
+Optional<T> reduce(
+        BinaryOperator<T> accumulator
+)
+Example: Sum Numbers
+List<Integer> numbers =
+        List.of(1, 2, 3, 4);
+
+Optional<Integer> result =
+        numbers.stream()
+               .reduce((a, b) -> a + b);
+
+System.out.println(result.get());
+
+Output:
+
+10
+What Happens Internally?
+
+Java does something like:
+
+1 + 2 = 3
+
+3 + 3 = 6
+
+6 + 4 = 10
+
+Final result:
+
+10
+Why Optional?
+
+What if the stream is empty?
+
+List<Integer> numbers = List.of();
+
+There is no result.
+
+Therefore:
+
+Optional<Integer>
+
+is returned.
+
+Second Version of reduce()
+Method Signature
+T reduce(
+        T identity,
+        BinaryOperator<T> accumulator
+)
+Identity Value
+
+Identity is the starting value.
+
+Example:
+
+int sum =
+    numbers.stream()
+           .reduce(0, (a, b) -> a + b);
+
+Output:
+
+10
+Internal Execution
+0 + 1 = 1
+
+1 + 2 = 3
+
+3 + 3 = 6
+
+6 + 4 = 10
+Advantage
+
+No Optional needed.
+
+Result is returned directly.
+
+Example: Multiplication
+int result =
+    numbers.stream()
+           .reduce(1, (a, b) -> a * b);
+
+Output:
+
+24
+
+Because:
+
+1 * 1 * 2 * 3 * 4
+Finding Maximum
+Optional<Integer> max =
+    numbers.stream()
+           .reduce(Integer::max);
+Finding Minimum
+Optional<Integer> min =
+    numbers.stream()
+           .reduce(Integer::min);
+Concatenating Strings
+List<String> words =
+        List.of("Java", "is", "awesome");
+
+String result =
+    words.stream()
+         .reduce("", (a, b) -> a + " " + b);
+
+System.out.println(result);
+
+Output:
+
+Java is awesome
+BinaryOperator
+
+reduce() uses a BinaryOperator.
+
+A BinaryOperator:
+
+(a, b) -> result
+
+takes:
+
+first value
+second value
+
+and returns one value of the same type.
+
+Example:
+
+(a, b) -> a + b
+Common Use Cases
+Sum
+.reduce(0, Integer::sum)
+Maximum
+.reduce(Integer::max)
+Minimum
+.reduce(Integer::min)
+Join Strings
+.reduce("", String::concat)
+reduce() vs forEach()
+forEach()
+
+Performs actions.
+
+stream.forEach(...)
+
+Returns:
+
+nothing
+reduce()
+
+Produces one final value.
+
+stream.reduce(...)
+
+Returns:
+
+single result
+Common Interview Questions
+Is reduce() terminal or intermediate?
+
+✅ Terminal
+
+What does reduce() return?
+
+✅ One final value (or Optional)
+
+What is identity?
+
+✅ Initial value used for accumulation
+
+What functional interface is used?
+
+✅ BinaryOperator
+
+Summary
+reduce() combines many elements into one result
+terminal operation
+often used for:
+sum
+max
+min
+multiplication
+string concatenation
+uses a BinaryOperator
+identity is the starting value
