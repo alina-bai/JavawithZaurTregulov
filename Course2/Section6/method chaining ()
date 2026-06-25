@@ -1,0 +1,5 @@
+Method Chaining in Java
+
+Method Chaining is a technique where multiple methods are called one after another in a single statement.
+
+👉 The result of one method becomes the object on which the next method is called.
