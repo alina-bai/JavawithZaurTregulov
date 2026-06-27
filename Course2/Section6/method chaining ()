@@ -1,5 +1,193 @@
 Method Chaining in Java
 
-Method Chaining is a technique where multiple methods are called one after another in a single statement.
+Method chaining is a programming technique where multiple methods are called one after another in a single statement.
 
 👉 The result of one method becomes the object on which the next method is called.
+
+Basic Idea
+
+Instead of writing:
+
+Stream<String> stream = list.stream();
+
+stream = stream.filter(s -> s.length() > 5);
+
+stream = stream.map(String::toUpperCase);
+
+stream.forEach(System.out::println);
+
+We can write:
+
+list.stream()
+    .filter(s -> s.length() > 5)
+    .map(String::toUpperCase)
+    .forEach(System.out::println);
+
+👉 This is called method chaining.
+
+Why Does It Work?
+
+Method chaining works because most methods return an object.
+
+Example:
+
+stream.filter(...)
+
+returns:
+
+Stream<T>
+
+Then you can immediately call another method:
+
+stream.filter(...)
+      .map(...)
+
+because map() is also a method of Stream.
+
+Example Step by Step
+List<String> fruits = List.of(
+        "apple",
+        "banana",
+        "orange"
+);
+
+fruits.stream()
+      .filter(fruit -> fruit.length() > 5)
+      .map(String::toUpperCase)
+      .sorted()
+      .forEach(System.out::println);
+
+Execution:
+
+Create a stream.
+Keep only words with more than 5 letters.
+Convert them to uppercase.
+Sort them.
+Print the result.
+
+Output:
+
+BANANA
+ORANGE
+Method Chaining in Stream API
+
+A typical stream pipeline looks like this:
+
+Source
+   ↓
+Intermediate Operation
+   ↓
+Intermediate Operation
+   ↓
+Intermediate Operation
+   ↓
+Terminal Operation
+
+Example:
+
+list.stream()
+    .filter(...)
+    .map(...)
+    .sorted()
+    .forEach(...);
+Intermediate Operations
+
+These methods return another Stream, allowing the chain to continue.
+
+Examples:
+
+filter()
+map()
+sorted()
+distinct()
+limit()
+skip()
+Terminal Operations
+
+These methods end the chain.
+
+Examples:
+
+forEach()
+collect()
+count()
+reduce()
+findFirst()
+
+After a terminal operation, the stream is closed and cannot be used again.
+
+Another Example
+List<Integer> numbers =
+        List.of(5, 2, 8, 1, 3);
+
+List<Integer> result =
+        numbers.stream()
+               .filter(n -> n > 2)
+               .sorted()
+               .toList();
+
+Execution:
+
+5 2 8 1 3
+↓
+filter (>2)
+↓
+5 8 3
+↓
+sorted
+↓
+3 5 8
+↓
+toList()
+Advantages
+
+✅ Cleaner code
+
+✅ More readable
+
+✅ Easy to follow
+
+✅ Less temporary variables
+
+Common Mistakes
+Calling a terminal operation too early
+list.stream()
+    .forEach(System.out::println)
+    .filter(...); // ❌ Error
+
+forEach() returns void, so there is no stream left to continue the chain.
+
+Reusing a Stream
+Stream<String> stream = list.stream();
+
+stream.forEach(System.out::println);
+
+stream.forEach(System.out::println); // ❌ Error
+
+A stream can only be consumed once.
+
+Real-Life Analogy
+
+Imagine making coffee:
+
+Coffee Beans
+      ↓
+Grind
+      ↓
+Brew
+      ↓
+Pour
+      ↓
+Drink
+
+Each step takes the result of the previous one.
+
+A stream pipeline works the same way.
+
+Summary
+Method chaining means calling methods one after another.
+Each method returns an object that allows the next method to be called.
+Stream API relies heavily on method chaining.
+Intermediate operations return a Stream.
+A terminal operation finishes the pipeline.
+Method chaining makes code shorter, cleaner, and easier to read.
