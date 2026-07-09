@@ -1,0 +1,162 @@
+Stream.concat() in Java
+
+Stream.concat() is a static method used to combine two streams into a single stream.
+
+👉 The elements of the first stream come first, followed by the elements of the second stream.
+
+Method Signature
+static <T> Stream<T> concat(
+        Stream<? extends T> a,
+        Stream<? extends T> b
+)
+Parameters
+a → first stream
+b → second stream
+Return Value
+
+Returns a new Stream containing all elements from both streams.
+
+Basic Example
+Stream<String> stream1 =
+        Stream.of("Apple", "Banana");
+
+Stream<String> stream2 =
+        Stream.of("Orange", "Mango");
+
+Stream<String> result =
+        Stream.concat(stream1, stream2);
+
+result.forEach(System.out::println);
+
+Output:
+
+Apple
+Banana
+Orange
+Mango
+How concat() Works
+Stream 1:
+Apple
+Banana
+
++
+
+Stream 2:
+Orange
+Mango
+
+↓
+
+New Stream:
+Apple
+Banana
+Orange
+Mango
+Example with Numbers
+Stream<Integer> first =
+        Stream.of(1, 2, 3);
+
+Stream<Integer> second =
+        Stream.of(4, 5, 6);
+
+Stream.concat(first, second)
+      .forEach(System.out::println);
+
+Output:
+
+1
+2
+3
+4
+5
+6
+Using concat() with Collections
+List<String> fruits =
+        List.of("Apple", "Banana");
+
+List<String> vegetables =
+        List.of("Carrot", "Potato");
+
+Stream.concat(
+        fruits.stream(),
+        vegetables.stream()
+)
+.forEach(System.out::println);
+Using concat() with Other Stream Operations
+Stream.concat(
+        Stream.of(1, 2, 3),
+        Stream.of(4, 5, 6)
+)
+.filter(x -> x % 2 == 0)
+.forEach(System.out::println);
+
+Output:
+
+2
+4
+6
+Important Notes
+Streams can only be used once
+Stream<String> stream1 =
+        Stream.of("A", "B");
+
+Stream<String> stream2 =
+        Stream.of("C", "D");
+
+Stream<String> result =
+        Stream.concat(stream1, stream2);
+
+result.forEach(System.out::println);
+
+// stream1.forEach(...); ❌ Error
+
+After a stream is consumed, it cannot be reused.
+
+concat() vs addAll()
+addAll()
+list1.addAll(list2);
+modifies the original collection
+works with collections
+Stream.concat()
+Stream.concat(stream1, stream2);
+does not modify collections
+creates a new stream
+works only with streams
+Time Complexity
+
+If the first stream has n elements and the second has m elements:
+
+O(n + m)
+
+because every element is processed once.
+
+Common Interview Questions
+Is concat() a Stream method?
+
+❌ No.
+
+It is a static method of the Stream class.
+
+Does concat() modify the original streams?
+
+❌ No.
+
+It creates a new stream.
+
+How many streams can concat() combine?
+
+✅ Only two at a time.
+
+To combine more, you can nest calls:
+
+Stream.concat(
+    Stream.concat(stream1, stream2),
+    stream3
+);
+Summary
+Stream.concat() combines two streams into one.
+It is a static method of the Stream class.
+The original streams are not modified.
+The elements of the first stream are followed by the elements of the second stream.
+Returns a new Stream.
+Time complexity is O(n + m).
