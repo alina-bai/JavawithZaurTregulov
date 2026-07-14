@@ -1,0 +1,189 @@
+distinct() Method in Java Stream API
+
+distinct() is an intermediate operation that removes duplicate elements from a stream.
+
+👉 It keeps only unique elements.
+
+Method Signature
+Stream<T> distinct()
+Return Value
+
+Returns a new Stream containing only unique elements.
+
+Basic Example
+List<Integer> numbers =
+        List.of(1, 2, 2, 3, 3, 3, 4);
+
+numbers.stream()
+       .distinct()
+       .forEach(System.out::println);
+
+Output:
+
+1
+2
+3
+4
+How distinct() Works
+
+Given:
+
+1
+2
+2
+3
+3
+4
+4
+4
+
+After calling distinct():
+
+1
+2
+3
+4
+
+Every duplicate is removed.
+
+Example with Strings
+List<String> fruits =
+        List.of(
+            "Apple",
+            "Banana",
+            "Apple",
+            "Orange",
+            "Banana"
+        );
+
+fruits.stream()
+      .distinct()
+      .forEach(System.out::println);
+
+Output:
+
+Apple
+Banana
+Orange
+How Does distinct() Know an Element Is a Duplicate?
+
+distinct() uses:
+
+equals()
+hashCode()
+
+This is the same mechanism used by HashSet.
+
+For custom objects, you must correctly override both methods.
+
+Example:
+
+class Person {
+
+    private String name;
+
+    @Override
+    public boolean equals(Object obj) {
+        // compare objects
+    }
+
+    @Override
+    public int hashCode() {
+        // generate hash code
+    }
+}
+
+Without equals() and hashCode(), distinct() may not remove duplicates correctly.
+
+Example with Custom Objects
+people.stream()
+      .distinct()
+      .forEach(System.out::println);
+
+If equals() and hashCode() are implemented correctly, duplicate Person objects will be removed.
+
+Using distinct() with Other Stream Operations
+numbers.stream()
+       .distinct()
+       .sorted()
+       .forEach(System.out::println);
+
+Execution:
+
+Original
+↓
+distinct()
+↓
+sorted()
+↓
+forEach()
+distinct() Is an Intermediate Operation
+
+This does nothing yet:
+
+numbers.stream()
+       .distinct();
+
+Execution starts only after a terminal operation:
+
+numbers.stream()
+       .distinct()
+       .forEach(System.out::println);
+Original Collection Is Not Modified
+List<Integer> numbers =
+        List.of(1, 2, 2, 3);
+numbers.stream()
+       .distinct()
+       .toList();
+
+Original list:
+
+[1, 2, 2, 3]
+
+remains unchanged.
+
+Time Complexity
+
+On average:
+
+O(n)
+
+because each element is checked only once.
+
+Common Use Cases
+Remove Duplicate Numbers
+numbers.stream()
+       .distinct();
+Remove Duplicate Strings
+words.stream()
+     .distinct();
+Remove Duplicate Objects
+people.stream()
+      .distinct();
+
+Requires proper equals() and hashCode().
+
+Common Interview Questions
+Is distinct() terminal or intermediate?
+
+✅ Intermediate
+
+Does distinct() modify the original collection?
+
+❌ No
+
+What does distinct() return?
+
+✅ Stream
+
+Which methods does distinct() use?
+
+✅ equals() and hashCode()
+
+Summary
+distinct() removes duplicate elements.
+Returns a new Stream.
+Is an intermediate operation.
+Does not modify the original collection.
+Uses equals() and hashCode() to identify duplicates.
+Average time complexity is O(n).
