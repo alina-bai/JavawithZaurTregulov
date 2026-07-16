@@ -1,0 +1,179 @@
+count() Method in Java Stream API
+
+count() is a terminal operation that returns the number of elements in a stream.
+
+👉 It counts how many elements are in the stream.
+
+Method Signature
+long count()
+Return Value
+
+Returns a value of type long.
+
+Why long?
+
+Because a stream may contain more than 2,147,483,647 elements (the maximum value of int).
+
+Basic Example
+List<String> fruits =
+        List.of("Apple", "Banana", "Orange");
+
+long total =
+        fruits.stream()
+              .count();
+
+System.out.println(total);
+
+Output:
+
+3
+How count() Works
+
+Suppose we have:
+
+Apple
+Banana
+Orange
+
+Java counts each element:
+
+1
+2
+3
+
+Final result:
+
+3
+count() After filter()
+
+One of the most common use cases:
+
+long total =
+        fruits.stream()
+              .filter(f -> f.startsWith("A"))
+              .count();
+
+System.out.println(total);
+
+Output:
+
+1
+
+Only "Apple" starts with "A".
+
+Example with Numbers
+List<Integer> numbers =
+        List.of(1, 2, 3, 4, 5, 6);
+
+long evenNumbers =
+        numbers.stream()
+               .filter(n -> n % 2 == 0)
+               .count();
+
+System.out.println(evenNumbers);
+
+Output:
+
+3
+
+Even numbers are:
+
+2
+4
+6
+count() Is a Terminal Operation
+stream.count();
+
+After calling count(), the stream is closed.
+
+You cannot use it again.
+
+Stream<String> stream =
+        fruits.stream();
+
+stream.count();
+
+stream.forEach(System.out::println); // ❌ Error
+Original Collection Is Not Modified
+fruits.stream()
+      .count();
+
+The original list remains exactly the same.
+
+count() with Other Stream Methods
+long result =
+        fruits.stream()
+              .filter(f -> f.length() > 5)
+              .distinct()
+              .count();
+
+Execution:
+
+Source
+↓
+filter()
+↓
+distinct()
+↓
+count()
+
+Result:
+
+number of remaining elements
+Time Complexity
+
+Usually:
+
+O(n)
+
+because every element must be processed.
+
+Common Use Cases
+Count All Elements
+list.stream().count();
+Count Even Numbers
+numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .count();
+Count Unique Elements
+list.stream()
+    .distinct()
+    .count();
+Count Matching Objects
+people.stream()
+      .filter(Person::isActive)
+      .count();
+Common Interview Questions
+Is count() terminal or intermediate?
+
+✅ Terminal
+
+What does count() return?
+
+✅ long
+
+Does count() modify the collection?
+
+❌ No
+
+Can a stream be reused after count()?
+
+❌ No
+
+count() vs size()
+size()
+list.size();
+works only with collections
+returns an int
+count()
+list.stream().count();
+works with streams
+returns a long
+can count elements after filtering, mapping, or other stream operations
+Summary
+count() returns the number of elements in a stream.
+It is a terminal operation.
+Returns a long.
+Does not modify the original collection.
+The stream cannot be reused after calling count().
+Commonly used after methods like filter() and distinct().
