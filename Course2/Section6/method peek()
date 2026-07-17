@@ -1,0 +1,172 @@
+peek() Method in Java Stream API
+
+peek() is an intermediate operation that performs an action on each element without modifying the stream.
+
+👉 It is mainly used for debugging and inspecting elements as they flow through a stream.
+
+Method Signature
+Stream<T> peek(Consumer<? super T> action)
+Parameter
+
+peek() accepts a Consumer.
+
+A Consumer performs an action but does not return a value.
+
+Return Value
+
+Returns a new Stream.
+
+This allows method chaining.
+
+Basic Example
+List<String> fruits =
+        List.of("Apple", "Banana", "Orange");
+
+fruits.stream()
+      .peek(System.out::println)
+      .count();
+
+Output:
+
+Apple
+Banana
+Orange
+Why Use peek()?
+
+Its main purpose is debugging.
+
+Example:
+
+numbers.stream()
+       .filter(n -> n > 3)
+       .peek(System.out::println)
+       .count();
+
+Output:
+
+4
+5
+6
+
+You can see which elements passed the filter() operation.
+
+peek() in a Stream Pipeline
+List<String> fruits =
+        List.of("apple",
+                "banana",
+                "orange");
+fruits.stream()
+      .filter(s -> s.length() > 5)
+      .peek(s -> System.out.println("After filter: " + s))
+      .map(String::toUpperCase)
+      .peek(s -> System.out.println("After map: " + s))
+      .forEach(System.out::println);
+
+Output:
+
+After filter: banana
+After map: BANANA
+BANANA
+
+After filter: orange
+After map: ORANGE
+ORANGE
+
+Notice how peek() lets you inspect the stream at different stages.
+
+peek() Does NOT Modify Elements
+numbers.stream()
+       .peek(System.out::println)
+       .forEach(System.out::println);
+
+The stream remains exactly the same.
+
+But Objects Can Be Modified
+
+If the stream contains mutable objects:
+
+people.stream()
+      .peek(person -> person.setActive(true))
+      .forEach(System.out::println);
+
+The objects themselves are changed.
+
+⚠️ Although this is possible, it is not recommended because peek() is intended for debugging, not for changing data.
+
+peek() Is Lazy
+
+Nothing happens here:
+
+numbers.stream()
+       .peek(System.out::println);
+
+There is no terminal operation.
+
+Execution starts only after:
+
+numbers.stream()
+       .peek(System.out::println)
+       .count();
+peek() vs forEach()
+
+This is a very common interview question.
+
+peek()	forEach()
+Intermediate operation	Terminal operation
+Returns Stream	Returns void
+Used for debugging	Used to perform final actions
+Chain continues	Chain ends
+Example
+peek()
+list.stream()
+    .peek(System.out::println)
+    .filter(s -> s.startsWith("A"))
+    .count();
+
+The stream continues after peek().
+
+forEach()
+list.stream()
+    .forEach(System.out::println);
+
+The stream ends here.
+
+You cannot call another stream method after forEach().
+
+Common Use Cases
+Debugging
+.peek(System.out::println)
+Logging
+.peek(item ->
+        logger.info(item))
+Checking Data Flow
+stream
+    .filter(...)
+    .peek(...)
+    .map(...)
+    .peek(...)
+    .collect(...);
+Common Interview Questions
+Is peek() terminal or intermediate?
+
+✅ Intermediate
+
+What functional interface does peek() use?
+
+✅ Consumer
+
+Does peek() modify the stream?
+
+❌ No
+
+What is peek() mainly used for?
+
+✅ Debugging and inspecting elements during stream processing.
+
+Summary
+peek() performs an action on each element without changing the stream.
+It is an intermediate operation.
+Returns a Stream.
+Uses a Consumer.
+Is lazy and requires a terminal operation.
+Primarily used for debugging, logging, and understanding how data flows through a stream.
