@@ -1,0 +1,314 @@
+flatMap() Method in Java Stream API
+
+flatMap() is an intermediate operation that is used to transform each element of a stream into another stream and then flatten all streams into one single stream.
+
+👉 Simple idea:
+
+Stream of Streams → One Stream
+Why do we need flatMap()?
+
+The main problem:
+
+Sometimes we have nested collections.
+
+Example:
+
+List<List<String>> names = List.of(
+        List.of("John", "Alex"),
+        List.of("Maria", "Anna"),
+        List.of("Tom")
+);
+
+We have:
+
+[
+ [John, Alex],
+ [Maria, Anna],
+ [Tom]
+]
+
+This is a:
+
+List<List<String>>
+
+But we want:
+
+John
+Alex
+Maria
+Anna
+Tom
+
+A single:
+
+Stream<String>
+
+This is where flatMap() is used.
+
+Method Signature
+<R> Stream<R> flatMap(
+        Function<? super T, ? extends Stream<? extends R>> mapper
+)
+
+Let's break it down:
+
+Function
+
+flatMap() uses a Function.
+
+Input:
+
+one element
+
+Output:
+
+another Stream
+map() vs flatMap()
+
+This is the most important comparison.
+
+map()
+
+map() transforms each element.
+
+Example:
+
+List<String> names =
+        List.of("john", "alex");
+
+names.stream()
+     .map(String::toUpperCase)
+     .forEach(System.out::println);
+
+Result:
+
+JOHN
+ALEX
+
+Structure stays the same:
+
+Stream<String>
+        ↓
+Stream<String>
+flatMap()
+
+flatMap() transforms and flattens.
+
+Example:
+
+List<List<String>> names = List.of(
+        List.of("John", "Alex"),
+        List.of("Maria", "Anna")
+);
+
+names.stream()
+     .flatMap(list -> list.stream())
+     .forEach(System.out::println);
+
+Output:
+
+John
+Alex
+Maria
+Anna
+
+Structure changes:
+
+Stream<List<String>>
+          ↓
+Stream<String>
+How flatMap() Works Step by Step
+
+Original:
+
+[
+ [A, B],
+ [C, D],
+ [E]
+]
+
+Step 1:
+
+Each list becomes a Stream:
+
+[A, B] → Stream(A, B)
+
+[C, D] → Stream(C, D)
+
+[E] → Stream(E)
+
+Step 2:
+
+Streams are merged:
+
+Stream(A, B, C, D, E)
+Basic Example
+List<List<Integer>> numbers =
+        List.of(
+            List.of(1, 2),
+            List.of(3, 4),
+            List.of(5, 6)
+        );
+
+numbers.stream()
+       .flatMap(list -> list.stream())
+       .forEach(System.out::println);
+
+Output:
+
+1
+2
+3
+4
+5
+6
+flatMap() with Strings
+
+Example:
+
+List<String> sentences =
+        List.of(
+            "Java is great",
+            "Stream API is powerful"
+        );
+
+We want every word separately.
+
+sentences.stream()
+         .flatMap(sentence ->
+                 Arrays.stream(sentence.split(" "))
+         )
+         .forEach(System.out::println);
+
+Output:
+
+Java
+is
+great
+Stream
+API
+is
+powerful
+flatMap() with Objects
+
+Example:
+
+class Student {
+
+    private String name;
+    private List<String> courses;
+
+}
+
+Students:
+
+Student 1:
+Java, SQL
+
+Student 2:
+Spring, Docker
+
+Get all courses:
+
+students.stream()
+        .flatMap(student ->
+                student.getCourses().stream())
+        .forEach(System.out::println);
+
+Output:
+
+Java
+SQL
+Spring
+Docker
+flatMap() with Optional
+
+Another common use:
+
+Optional<String> optional =
+        Optional.of("Java");
+
+Instead of:
+
+map()
+
+which creates:
+
+Optional<Optional<String>>
+
+use:
+
+flatMap()
+
+to avoid nesting.
+
+flatMap() Is Lazy
+
+Like other stream operations:
+
+stream.flatMap(...)
+
+does nothing immediately.
+
+Execution starts only after:
+
+.forEach()
+.collect()
+.count()
+flatMap() Does Not Modify Original Data
+
+Example:
+
+List<List<Integer>> numbers =
+        List.of(
+            List.of(1,2),
+            List.of(3,4)
+        );
+
+numbers.stream()
+       .flatMap(List::stream);
+
+Original list remains:
+
+[[1,2],[3,4]]
+Time Complexity
+
+If total elements are n:
+
+O(n)
+
+because every element is processed once.
+
+Common Interview Questions
+What is the difference between map() and flatMap()?
+
+map():
+
+one element → one element
+
+flatMap():
+
+one element → multiple elements → flattened
+What does flatMap() return?
+
+✅ Stream
+
+Which functional interface does flatMap() use?
+
+✅ Function
+
+When should we use flatMap()?
+
+When we have:
+
+nested collections
+nested streams
+Optional inside Optional
+need to combine multiple streams
+Summary
+flatMap() transforms and flattens data.
+It converts multiple streams into one stream.
+It is an intermediate operation.
+Uses Function.
+Commonly used with nested collections.
+Main purpose: remove one level of nesting.
