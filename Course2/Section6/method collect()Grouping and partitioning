@@ -1,0 +1,254 @@
+collect() Method - groupingBy() and partitioningBy()
+
+collect() is a terminal operation that collects the elements of a stream into another data structure such as a List, Set, or Map.
+
+One of its most powerful features is grouping data.
+
+Method Signature
+<R, A> R collect(Collector<? super T, A, R> collector)
+
+Don't worry about the generic types.
+
+👉 Just remember:
+
+collect() needs a Collector.
+
+What is a Collector?
+
+A Collector tells Java how to collect stream elements.
+
+Common collectors are:
+
+toList()
+toSet()
+toMap()
+joining()
+counting()
+groupingBy()
+partitioningBy()
+groupingBy()
+
+groupingBy() groups elements by a key.
+
+Think of SQL:
+
+GROUP BY department
+
+It does exactly the same thing.
+
+Example
+List<String> fruits = List.of(
+        "Apple",
+        "Banana",
+        "Avocado",
+        "Orange"
+);
+
+Map<Character, List<String>> result =
+        fruits.stream()
+              .collect(Collectors.groupingBy(
+                      s -> s.charAt(0)
+              ));
+
+Result:
+
+A → [Apple, Avocado]
+
+B → [Banana]
+
+O → [Orange]
+Another Example
+
+Group people by age.
+
+class Person {
+
+    private String name;
+    private int age;
+
+}
+Map<Integer, List<Person>> peopleByAge =
+        people.stream()
+              .collect(Collectors.groupingBy(
+                      Person::getAge
+              ));
+
+Result:
+
+20 → John, Alice
+
+25 → Bob
+
+30 → Tom
+groupingBy() Return Type
+
+Usually:
+
+Map<Key, List<Value>>
+
+Example:
+
+Map<Integer, List<Person>>
+
+or
+
+Map<Character, List<String>>
+groupingBy() with counting()
+
+Count how many people belong to each age.
+
+Map<Integer, Long> result =
+        people.stream()
+              .collect(
+                  Collectors.groupingBy(
+                      Person::getAge,
+                      Collectors.counting()
+                  )
+              );
+
+Result:
+
+20 → 5
+
+25 → 3
+
+30 → 2
+groupingBy() with mapping()
+
+Instead of storing whole objects:
+
+Person
+
+store only names.
+
+Map<Integer, List<String>> result =
+        people.stream()
+              .collect(
+                  Collectors.groupingBy(
+                      Person::getAge,
+                      Collectors.mapping(
+                          Person::getName,
+                          Collectors.toList()
+                      )
+                  )
+              );
+
+Result:
+
+20 → [John, Alice]
+
+25 → [Bob]
+partitioningBy()
+
+partitioningBy() splits data into exactly two groups.
+
+The key is always:
+
+true
+
+false
+Example
+Map<Boolean, List<Integer>> result =
+        numbers.stream()
+               .collect(
+                   Collectors.partitioningBy(
+                       n -> n % 2 == 0
+                   )
+               );
+
+Result:
+
+true  → [2,4,6]
+
+false → [1,3,5]
+Another Example
+
+Adults vs children.
+
+Map<Boolean, List<Person>> result =
+        people.stream()
+              .collect(
+                  Collectors.partitioningBy(
+                      person -> person.getAge() >= 18
+                  )
+              );
+
+Result:
+
+true
+
+John
+Alice
+
+false
+
+Tom
+Mike
+groupingBy() vs partitioningBy()
+groupingBy()	partitioningBy()
+many groups	only two groups
+key can be any type	key is always Boolean
+returns Map<K, List<T>>	returns Map<Boolean, List<T>>
+When to Use groupingBy()
+
+Use when you want:
+
+employees by department
+students by grade
+products by category
+books by author
+
+Example:
+
+Department
+
+IT
+HR
+Sales
+Finance
+When to Use partitioningBy()
+
+Use when there are only two possible groups.
+
+Examples:
+
+Passed / Failed
+
+Active / Inactive
+
+Adult / Child
+
+Even / Odd
+Common Interview Questions
+Is collect() terminal?
+
+✅ Yes.
+
+What does groupingBy() return?
+
+Usually:
+
+Map<K, List<T>>
+What does partitioningBy() return?
+Map<Boolean, List<T>>
+What is the difference?
+
+groupingBy()
+
+↓
+
+many groups
+
+partitioningBy()
+
+↓
+
+only true/false groups
+
+Summary
+collect() gathers stream elements into a collection or another result.
+groupingBy() groups elements by any key.
+partitioningBy() splits elements into two groups based on a boolean condition.
+Both methods return a Map.
+groupingBy() is flexible and can create many groups.
+partitioningBy() always creates exactly two groups: true and false.
