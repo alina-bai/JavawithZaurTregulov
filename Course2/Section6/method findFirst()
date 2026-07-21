@@ -1,0 +1,276 @@
+findFirst() Method in Java Stream API
+
+findFirst() is a terminal operation that returns the first element of a stream.
+
+👉 It is used when we need to get one element from a stream.
+
+Method Signature
+Optional<T> findFirst()
+Why does findFirst() return Optional?
+
+Because the stream may be empty.
+
+Example:
+
+List<String> names = List.of();
+
+Optional<String> result =
+        names.stream()
+             .findFirst();
+
+There is no first element.
+
+Instead of returning null, Java returns:
+
+Optional.empty()
+
+This helps avoid NullPointerException.
+
+Basic Example
+List<String> names =
+        List.of(
+            "John",
+            "Alice",
+            "Bob"
+        );
+
+Optional<String> first =
+        names.stream()
+             .findFirst();
+
+System.out.println(first.get());
+
+Output:
+
+John
+How findFirst() Works
+
+Stream:
+
+John
+Alice
+Bob
+
+findFirst() takes:
+
+John
+
+and stops processing.
+
+Using findFirst() with filter()
+
+This is the most common usage.
+
+Example:
+
+List<String> names =
+        List.of(
+            "Tom",
+            "Alice",
+            "Anna",
+            "Bob"
+        );
+
+Optional<String> result =
+        names.stream()
+             .filter(name -> name.startsWith("A"))
+             .findFirst();
+
+System.out.println(result.get());
+
+Output:
+
+Alice
+Stream Pipeline
+
+Execution:
+
+Source
+  ↓
+filter()
+  ↓
+findFirst()
+
+Data:
+
+Tom      ❌
+Alice    ✅ stop
+Anna
+Bob
+
+Because the first matching element is found, the stream stops.
+
+Using ifPresent()
+
+Instead of:
+
+result.get()
+
+better:
+
+result.ifPresent(System.out::println);
+
+Example:
+
+names.stream()
+     .filter(n -> n.startsWith("A"))
+     .findFirst()
+     .ifPresent(System.out::println);
+
+Output:
+
+Alice
+findFirst() Without Order
+
+For ordered streams:
+
+List<Integer> numbers =
+        List.of(5, 2, 8, 1);
+numbers.stream()
+       .findFirst();
+
+returns:
+
+5
+
+because it is the first element.
+
+findFirst() with sorted()
+
+Example:
+
+Optional<Integer> result =
+        numbers.stream()
+               .sorted()
+               .findFirst();
+
+Execution:
+
+Original:
+5 2 8 1
+
+sorted():
+
+1 2 5 8
+
+findFirst():
+
+1
+findFirst() with Parallel Stream
+
+Important interview topic.
+
+Sequential stream:
+
+list.stream()
+    .findFirst();
+
+always respects order.
+
+Parallel stream:
+
+list.parallelStream()
+    .findFirst();
+
+still returns the first element according to encounter order.
+
+Example:
+
+1 2 3 4 5
+
+Result:
+
+1
+findFirst() vs findAny()
+
+Very common interview question.
+
+findFirst()
+
+Returns the first element.
+
+stream.findFirst();
+
+Example:
+
+1 2 3 4 5
+
+Result:
+1
+findAny()
+
+Returns any element.
+
+stream.findAny();
+
+Example:
+
+1 2 3 4 5
+
+Result:
+3
+
+(depends on execution)
+
+findFirst() vs findAny()
+findFirst()	findAny()
+Returns first element	Returns any element
+Maintains order	May ignore order
+More predictable	Faster in parallel streams
+Usually used in sequential streams	Useful with parallel streams
+findFirst() with Objects
+
+Example:
+
+Optional<Person> person =
+        people.stream()
+              .filter(
+                  Person::isActive
+              )
+              .findFirst();
+
+Returns the first active person.
+
+Complexity
+
+Average:
+
+O(1)
+
+if the first element matches.
+
+Worst case:
+
+O(n)
+
+if it needs to search all elements.
+
+Common Interview Questions
+Is findFirst() terminal or intermediate?
+
+✅ Terminal
+
+What does findFirst() return?
+
+✅ Optional<T>
+
+What happens if the stream is empty?
+
+Returns:
+
+Optional.empty()
+Does findFirst() modify the collection?
+
+❌ No
+
+Difference between findFirst() and findAny()?
+findFirst() → first element
+findAny() → any element
+Summary
+findFirst() returns the first element of a stream.
+It is a terminal operation.
+It returns Optional<T>.
+It works well with filter().
+It stops processing when the first match is found.
+It respects encounter order.
+It helps avoid null values.
