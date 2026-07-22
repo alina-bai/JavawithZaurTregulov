@@ -1,0 +1,226 @@
+min() and max() Methods in Java Stream API
+
+min() and max() are terminal operations used to find the smallest or largest element in a stream.
+
+Both methods require a Comparator to compare elements.
+
+Method Signatures
+min()
+Optional<T> min(Comparator<? super T> comparator)
+max()
+Optional<T> max(Comparator<? super T> comparator)
+Why Do They Return Optional?
+
+A stream may be empty.
+
+Example:
+
+List<Integer> numbers = List.of();
+
+Optional<Integer> min =
+        numbers.stream()
+               .min(Integer::compareTo);
+
+Result:
+
+Optional.empty()
+
+Using Optional avoids returning null.
+
+Finding the Minimum Number
+List<Integer> numbers =
+        List.of(5, 2, 8, 1, 3);
+
+Optional<Integer> min =
+        numbers.stream()
+               .min(Integer::compareTo);
+
+System.out.println(min.get());
+
+Output:
+
+1
+Finding the Maximum Number
+Optional<Integer> max =
+        numbers.stream()
+               .max(Integer::compareTo);
+
+System.out.println(max.get());
+
+Output:
+
+8
+How Does It Work?
+
+For:
+
+5 2 8 1 3
+
+min() compares:
+
+5 vs 2 → 2
+
+2 vs 8 → 2
+
+2 vs 1 → 1
+
+1 vs 3 → 1
+
+Result:
+
+1
+Comparator
+
+Both methods require a Comparator.
+
+Example:
+
+numbers.stream()
+       .max(Integer::compareTo);
+
+is equivalent to:
+
+numbers.stream()
+       .max((a, b) -> a.compareTo(b));
+Example with Strings
+List<String> fruits =
+        List.of(
+            "Orange",
+            "Apple",
+            "Banana"
+        );
+
+Optional<String> min =
+        fruits.stream()
+              .min(String::compareTo);
+
+System.out.println(min.get());
+
+Output:
+
+Apple
+Example with Custom Objects
+class Person {
+
+    private String name;
+    private int age;
+
+}
+
+Find the oldest person:
+
+Optional<Person> oldest =
+        people.stream()
+              .max(
+                  Comparator.comparing(
+                      Person::getAge
+                  )
+              );
+
+Find the youngest person:
+
+Optional<Person> youngest =
+        people.stream()
+              .min(
+                  Comparator.comparing(
+                      Person::getAge
+                  )
+              );
+Using comparing()
+Comparator<Person> byAge =
+        Comparator.comparing(
+                Person::getAge
+        );
+
+people.stream()
+      .max(byAge);
+Reverse Order
+people.stream()
+      .min(
+          Comparator.comparing(
+              Person::getAge
+          ).reversed()
+      );
+
+This returns the oldest person because the comparison order is reversed.
+
+Using ifPresent()
+
+Instead of:
+
+max.get();
+
+use:
+
+max.ifPresent(System.out::println);
+
+This avoids exceptions if the stream is empty.
+
+min() and max() After filter()
+Optional<Integer> result =
+        numbers.stream()
+               .filter(n -> n > 2)
+               .max(Integer::compareTo);
+
+Execution:
+
+5 2 8 1 3
+↓
+filter()
+↓
+5 8 3
+↓
+max()
+↓
+8
+Time Complexity
+
+Both methods:
+
+O(n)
+
+Every element must be compared.
+
+min()/max() vs sorted()
+Using sorted()
+numbers.stream()
+       .sorted()
+       .findFirst();
+
+This sorts the entire stream, which is unnecessary if you only need the smallest element.
+
+Using min()
+numbers.stream()
+       .min(Integer::compareTo);
+
+This directly finds the minimum without sorting everything.
+
+Common Interview Questions
+Are min() and max() terminal operations?
+
+✅ Yes.
+
+What do they return?
+
+✅ Optional<T>
+
+Why Optional?
+
+Because the stream may be empty.
+
+What do they require?
+
+✅ A Comparator
+
+Time complexity?
+
+✅ O(n)
+
+Summary
+min() finds the smallest element.
+max() finds the largest element.
+Both are terminal operations.
+Both return Optional<T>.
+Both require a Comparator.
+Neither modifies the original collection.
+Time complexity is O(n).
