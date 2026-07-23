@@ -1,0 +1,311 @@
+limit() Method in Java Stream API
+
+limit() is an intermediate operation that returns a stream containing only the first n elements of the original stream.
+
+👉 It is used to restrict the number of elements processed by a stream.
+
+Method Signature
+Stream<T> limit(long maxSize)
+Parameter
+maxSize
+
+The maximum number of elements that the stream should contain.
+
+Example:
+
+.limit(3)
+
+means:
+
+Keep only the first 3 elements.
+
+Return Value
+
+Returns a new Stream.
+
+Basic Example
+List<String> names =
+        List.of(
+            "John",
+            "Alice",
+            "Bob",
+            "Tom"
+        );
+
+names.stream()
+     .limit(2)
+     .forEach(System.out::println);
+
+Output:
+
+John
+Alice
+
+Only the first two elements are processed.
+
+How limit() Works
+
+Original stream:
+
+John
+Alice
+Bob
+Tom
+
+After:
+
+.limit(2)
+
+Result:
+
+John
+Alice
+
+The remaining elements are ignored.
+
+limit() with Numbers
+List<Integer> numbers =
+        List.of(1, 2, 3, 4, 5, 6);
+
+numbers.stream()
+       .limit(3)
+       .forEach(System.out::println);
+
+Output:
+
+1
+2
+3
+limit() with filter()
+
+Very common combination:
+
+List<Integer> numbers =
+        List.of(1, 2, 3, 4, 5, 6);
+
+numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .limit(2)
+       .forEach(System.out::println);
+
+Execution:
+
+Original:
+1 2 3 4 5 6
+
+filter():
+2 4 6
+
+limit(2):
+2 4
+
+Output:
+
+2
+4
+Order of Operations Matters
+
+These two examples give different results.
+
+limit() before filter()
+numbers.stream()
+       .limit(3)
+       .filter(n -> n % 2 == 0)
+       .forEach(System.out::println);
+
+Process:
+
+1 2 3
+
+Then filter:
+
+2
+
+Output:
+
+2
+filter() before limit()
+numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .limit(3)
+       .forEach(System.out::println);
+
+Process:
+
+2 4 6
+
+Output:
+
+2
+4
+6
+limit() with sorted()
+
+Example:
+
+List<Integer> numbers =
+        List.of(5, 1, 8, 2, 3);
+
+numbers.stream()
+       .sorted()
+       .limit(3)
+       .forEach(System.out::println);
+
+Execution:
+
+sorted():
+
+1 2 3 5 8
+
+limit(3):
+
+1 2 3
+
+Output:
+
+1
+2
+3
+limit() with Infinite Streams
+
+One of the main uses of limit() is working with infinite streams.
+
+Example:
+
+Stream.iterate(1, n -> n + 1)
+      .limit(5)
+      .forEach(System.out::println);
+
+Output:
+
+1
+2
+3
+4
+5
+
+Without limit() this stream would run forever.
+
+limit() Is Lazy
+
+This:
+
+numbers.stream()
+       .limit(3);
+
+does not execute anything.
+
+Execution starts only after a terminal operation:
+
+numbers.stream()
+       .limit(3)
+       .forEach(System.out::println);
+limit() Does Not Modify Original Collection
+
+Example:
+
+List<Integer> numbers =
+        List.of(1,2,3,4,5);
+
+numbers.stream()
+       .limit(2)
+       .toList();
+
+Original list:
+
+[1,2,3,4,5]
+
+remains unchanged.
+
+Time Complexity
+
+Usually:
+
+O(n)
+
+But because limit() is short-circuiting, it may process fewer elements.
+
+Example:
+
+Stream.of(1,2,3,4,5)
+      .limit(2)
+
+Only first two elements are processed.
+
+Short-Circuit Operation
+
+limit() is called a short-circuiting operation.
+
+Meaning:
+
+It can stop processing before reaching the end of the stream.
+
+Example:
+
+numbers.stream()
+       .filter(n -> n > 10)
+       .limit(3)
+       .forEach(System.out::println);
+
+Once 3 matching elements are found, the stream stops.
+
+Common Use Cases
+Get first N elements
+list.stream()
+    .limit(10);
+Pagination
+users.stream()
+     .limit(pageSize);
+Preview data
+products.stream()
+        .limit(5);
+Infinite streams
+Stream.generate(Math::random)
+      .limit(10);
+Common Interview Questions
+Is limit() terminal or intermediate?
+
+✅ Intermediate
+
+What does limit() return?
+
+✅ Stream
+
+Does limit() modify the collection?
+
+❌ No
+
+What happens if limit() value is bigger than stream size?
+
+Example:
+
+.limit(100)
+
+with 5 elements:
+
+Returns all 5 elements
+
+No error.
+
+Can limit() have negative value?
+
+❌ No
+
+Example:
+
+.limit(-1)
+
+throws:
+
+IllegalArgumentException
+Summary
+limit() keeps only the first n elements.
+It is an intermediate operation.
+Returns a new Stream.
+Does not modify original data.
+It is a short-circuiting operation.
+Very useful for:
+pagination
+limiting results
+infinite streams
+getting first N elements
