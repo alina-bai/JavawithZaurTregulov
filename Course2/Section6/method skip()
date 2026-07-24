@@ -1,0 +1,310 @@
+skip() Method in Java Stream API
+
+skip() is an intermediate operation that discards the first n elements of a stream and returns a new stream with the remaining elements.
+
+👉 Simple idea:
+
+skip(n) = ignore first n elements
+Method Signature
+Stream<T> skip(long n)
+Parameter
+n
+
+The number of elements to skip.
+
+Example:
+
+.skip(3)
+
+means:
+
+Ignore the first 3 elements.
+
+Return Value
+
+Returns a new Stream.
+
+Basic Example
+List<String> names =
+        List.of(
+            "John",
+            "Alice",
+            "Bob",
+            "Tom"
+        );
+
+names.stream()
+     .skip(2)
+     .forEach(System.out::println);
+
+Output:
+
+Bob
+Tom
+How skip() Works
+
+Original stream:
+
+John
+Alice
+Bob
+Tom
+
+After:
+
+.skip(2)
+
+First two elements are removed:
+
+Bob
+Tom
+skip() with Numbers
+List<Integer> numbers =
+        List.of(1, 2, 3, 4, 5, 6);
+
+numbers.stream()
+       .skip(3)
+       .forEach(System.out::println);
+
+Output:
+
+4
+5
+6
+skip() and limit() Together
+
+This combination is very common.
+
+Example:
+
+numbers.stream()
+       .skip(2)
+       .limit(3)
+       .forEach(System.out::println);
+
+Original:
+
+1 2 3 4 5 6
+
+Step 1:
+
+skip(2)
+
+3 4 5 6
+
+Step 2:
+
+limit(3)
+
+3 4 5
+
+Output:
+
+3
+4
+5
+Pagination Example
+
+This is how pagination works.
+
+Imagine:
+
+List<User> users;
+
+Page size:
+
+int pageSize = 10;
+
+Page number:
+
+int page = 3;
+
+Formula:
+
+skip = (page - 1) * pageSize
+
+Code:
+
+users.stream()
+     .skip((page - 1) * pageSize)
+     .limit(pageSize)
+     .toList();
+
+For page 3:
+
+skip(20)
+limit(10)
+
+Meaning:
+
+Skip first 20 users and get the next 10.
+
+Order Matters
+
+These two pipelines are different.
+
+skip() then filter()
+numbers.stream()
+       .skip(3)
+       .filter(n -> n % 2 == 0)
+       .forEach(System.out::println);
+
+Process:
+
+1 2 3 4 5 6
+
+skip(3)
+
+4 5 6
+
+filter()
+
+4 6
+
+Output:
+
+4
+6
+filter() then skip()
+numbers.stream()
+       .filter(n -> n % 2 == 0)
+       .skip(3)
+       .forEach(System.out::println);
+
+Process:
+
+1 2 3 4 5 6
+
+filter()
+
+2 4 6
+
+skip(3)
+
+nothing
+
+Output:
+
+(no output)
+skip() Is Lazy
+
+This does not execute:
+
+numbers.stream()
+       .skip(2);
+
+Execution starts after terminal operation:
+
+numbers.stream()
+       .skip(2)
+       .forEach(System.out::println);
+skip() Does Not Modify Original Collection
+
+Example:
+
+List<Integer> numbers =
+        List.of(1,2,3,4,5);
+
+numbers.stream()
+       .skip(2)
+       .toList();
+
+Original list:
+
+[1,2,3,4,5]
+
+is unchanged.
+
+skip() with Infinite Streams
+
+skip() is useful with generated streams.
+
+Example:
+
+Stream.iterate(1, n -> n + 1)
+      .skip(5)
+      .limit(5)
+      .forEach(System.out::println);
+
+Output:
+
+6
+7
+8
+9
+10
+Short-Circuiting
+
+Unlike limit(), skip() is not considered a short-circuiting operation because it must skip elements before producing results.
+
+Example:
+
+stream.skip(100);
+
+Java must pass the first 100 elements before returning anything.
+
+Time Complexity
+
+Usually:
+
+O(n)
+
+because elements need to be traversed.
+
+Common Use Cases
+Pagination
+.skip(offset)
+.limit(size)
+Ignore first elements
+stream.skip(5);
+Processing batches
+
+Example:
+
+users.stream()
+     .skip(100)
+     .limit(50);
+Common Interview Questions
+Is skip() terminal or intermediate?
+
+✅ Intermediate
+
+What does skip() return?
+
+✅ Stream
+
+Does skip() modify the original collection?
+
+❌ No
+
+What happens if skip() is bigger than stream size?
+
+Example:
+
+list.stream()
+    .skip(100);
+
+Result:
+
+Empty stream
+
+No exception.
+
+Can skip() accept a negative value?
+
+❌ No
+
+Example:
+
+.skip(-1)
+
+throws:
+
+IllegalArgumentException
+Summary
+skip() ignores the first n elements of a stream.
+It is an intermediate operation.
+Returns a new Stream.
+Does not modify original data.
+Commonly used with limit() for pagination.
+Negative values are not allowed.
